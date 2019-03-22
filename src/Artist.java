@@ -1,10 +1,13 @@
 public class Artist {
 
-    private
-    int id;
-    String name;
-    String type;
-    String uri;
+    private int id;
+
+    private String name;
+
+    private String type;
+
+    private String uri;
+
 
 
 

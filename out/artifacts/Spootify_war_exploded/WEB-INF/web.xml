@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         metadata-complete="true"
+         version="4.0">
+    <servlet>
+        <servlet-name>RegisterUser</servlet-name>
+        <servlet-class>servlets.RegisterUser</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>RegisterUser</servlet-name>
+        <url-pattern>/RegisterUser</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdateName</servlet-name>
+        <servlet-class>servlets.UpdateName</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UpdateName</servlet-name>
+        <url-pattern>/UpdateName</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddDiscount</servlet-name>
+        <servlet-class>servlets.AddDiscount</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AddDiscount</servlet-name>
+        <url-pattern>/AddDiscount</url-pattern>
+    </servlet-mapping>
+</web-app>

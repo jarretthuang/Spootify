@@ -137,11 +137,15 @@ body {
   user-select: none;
 }
 
-#clan-name {
-    justify-self: center;
+#spootify-name {
+    justify-self: end;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 40px;
+    white-space: nowrap;
+    align-self: center;
 }
 
-#application-form {
+#login-form {
     display: none;
     background-color: black;
     border: 1px white solid;
@@ -166,12 +170,20 @@ body {
     
 }
 
-#join-button {
+#register-button {
     align-self: start;
     grid-column: 2 / 3;
     grid-row: 3/ 4;
-    justify-self: center;
+    justify-self: start;
 }
+
+#login-button {
+    align-self: start;
+    grid-column: 2 / 3;
+    grid-row: 3/ 4;
+    justify-self: end;
+}
+
 
 .minimal-button:hover {
     color: #000000;
@@ -225,6 +237,23 @@ body {
     user-select: none;
 }
 
+#guest-login {
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    align-self: center;
+    justify-self: center;
+    font-size: 16px;
+    grid-column: 1/4;
+    white-space: nowrap;
+    user-select: none;
+    text-decoration: none;
+}
+
+#guest-login:hover {
+    color: #b0bec5;
+    text-decoration: underline;
+}
+
 #da-form {
     display: grid;
     grid-template-rows: 50px 1fr 1fr;
@@ -236,7 +265,6 @@ body {
     align-self: center;
     justify-self: end;
     grid-column: 2/3;
-    margin-top: 20px;
 }
 
 #copy-right {
@@ -327,4 +355,5 @@ body {
 
 .submit-button:hover .submit-text {
     color: #b0bec5;
+    text-decoration: underline;
 }

@@ -4,7 +4,7 @@ $(runApp);
 let isDarkMode = true;
 
 function runApp() {
-    sendInitialQuery();
+    init();
     randomizeTheme();
 
 }
@@ -19,9 +19,14 @@ function randomizeTheme() {
     }
 }
 
-function sendInitialQuery() {
-
-// TODO
+function init() {
+    $("#login-button").click(function() {
+        $(".submit-text").show();
+        $(".check-submit").hide();
+        $("#login-form").modal({
+            fadeDuration: 100
+        });
+    });
 }
 
 function sendQuery(query) {

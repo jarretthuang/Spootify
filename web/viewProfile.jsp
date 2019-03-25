@@ -58,8 +58,10 @@
     <br>
     <input type="submit" value="Submit">
 </form>
+
+<label for="discount">Add a discount:</label>
 <form action="AddDiscount" method="post">
-    <select name = "dropdown" id="discount" onchange="this.form.submit()">
+    <select name = "discount" id="discount" onchange="this.form.submit()">
         <option value = "Student">Student</option>
         <option value = "Military">Military</option>
         <option value = "Family">Family</option>
@@ -67,6 +69,27 @@
     <input type="hidden" name="userId" value="<%=userId%>" />
 </form>
 
+<label for="viewTracks">View Tracks:</label>
+<form id="viewTracks" name="viewTracks" method="post" action="ViewTracks">
+    <input type="hidden" name="userId" value="<%=userId%>">
+    <button>View Tracks</button>
+</form>
+
+<h3>Search Tracks, Artists, or Playlists</h3>
+<form id="searchTracks" name="searchTracks" method="post" action="SearchTracks">
+    <label for="track">Title: </label><input type="text" id="track" name="track" />
+    <button>Search Tracks</button><br>
+</form>
+
+<form id="searchArtists" name="searchArtists" method="post" action="SearchArtists">
+    <label for="artist">Artist: </label><input type="text" id="artist" name="artist" />
+    <button>Search Artists</button><br>
+</form>
+
+<form id="searchPlaylists" name="searchPlaylists" method="post" action="SearchPlaylists">
+    <label for="playlist">Playlist Description: </label><input type="text" id="playlist" name="playlist" />
+    <button>Search Playlists</button>
+</form>
 
 </body>
 </html>

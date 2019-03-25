@@ -2,7 +2,6 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="Utility.DBConnection" %>
 <%@ page import="java.sql.PreparedStatement" %>
-<%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.SQLException" %><%--
   Created by IntelliJ IDEA.
   User: ashleybarkworth
@@ -24,7 +23,7 @@
     Connection connection = null;
 
     String queryUser = "INSERT INTO SpootifyUser VALUES (?,NULL,NULL)";
-    String queryGuest = "INSERT INTO SpootifyUser VALUES (?,0)";
+    String queryGuest = "INSERT INTO Guest VALUES (?,0)";
 
     try {
         connection = DBConnection.getConnection();
@@ -44,25 +43,17 @@
         e.printStackTrace();
     }
 %>
-<h1>Welcome, guest # <%= guestId%></h1>
+<h1>Welcome, guestID <%= guestId%></h1>
+<h4>Use your guestID to login for future listening</h4>
 
-<%
-    String getBalance = "SELECT Guest.balance FROM Guest WHERE Guest.userId = ?";
-    int balance = -1;
-    try {
-        if (connection != null) {
-            PreparedStatement statement = connection.prepareStatement(getBalance);
-            statement.setInt(1, guestId);
-            ResultSet rs = statement.executeQuery();
-            if (rs.next()) {
-                balance = rs.getInt("balance");
-            }
-        }
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-%>
+<form action="CheckBalance" method="post">
+    <input genre="hidden" name="guestId" value="<%=guestId%>" />
+    <input genre="submit" name="balance" value="Check balance" />
+</form>
 
-<h3>Your balance is <%= balance%></h3>
+<c:if test="${balance} >= 0">
+    <h3>Your balance is $ ${balance}</h3>
+</c:if>
+
 </body>
 </html>

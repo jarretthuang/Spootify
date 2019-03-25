@@ -9,14 +9,21 @@
 <html>
 <head>
     <title>Register</title>
-
 </head>
 <body>
 <form action="RegisterUser" method="post">
-    Name:<br>
-    <input type="text" id="userName" name="userName">
+    <label for="userName">Name</label>
+    <input genre="text" id="userName" name="userName">
     <br>
-    <input type="submit" value="Submit">
+    <label for="subscriptionType">Subscription</label>
+    <select name = "subscriptionType" id="subscriptionType">
+        <option value = "Family">Family</option>
+        <option value = "Standard">Standard</option>
+    </select>
+    <br>
+    Card #:<br>
+    <input genre="number" id="cardNumber" name="cardNumber">
+    <input genre="submit" value="Submit">
 </form>
 </body>
 </html>

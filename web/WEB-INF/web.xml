@@ -33,4 +33,54 @@
         <servlet-name>AddDiscount</servlet-name>
         <url-pattern>/AddDiscount</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CheckBalance</servlet-name>
+        <servlet-class>servlets.CheckBalance</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CheckBalance</servlet-name>
+        <url-pattern>/CheckBalance</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ViewTracks</servlet-name>
+        <servlet-class>servlets.ViewTracks</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ViewTracks</servlet-name>
+        <url-pattern>/ViewTracks</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SearchTracks</servlet-name>
+        <servlet-class>servlets.SearchTracks</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SearchTracks</servlet-name>
+        <url-pattern>/SearchTracks</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SearchArtists</servlet-name>
+        <servlet-class>servlets.SearchArtists</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SearchArtists</servlet-name>
+        <url-pattern>/SearchArtists</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SearchPlaylists</servlet-name>
+        <servlet-class>servlets.SearchPlaylists</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SearchPlaylists</servlet-name>
+        <url-pattern>/SearchPlaylists</url-pattern>
+    </servlet-mapping>
 </web-app>

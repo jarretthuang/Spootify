@@ -37,8 +37,8 @@
   <br>
   <label for="userID">Already a user? Enter your user ID below:</label>
   <form action="viewProfile.jsp" method="POST">
-    <input genre="number" id="userID" name="userID" />
-    <button genre="submit">Login </button>
+    <input type="number" id="userID" name="userID" />
+    <button type="submit">Login </button>
   </form>
 
   <a href="guest.jsp">Just wanna listen? Sign in as guest</a>

@@ -13,7 +13,7 @@
 <body>
 <form action="RegisterUser" method="post">
     <label for="userName">Name</label>
-    <input genre="text" id="userName" name="userName">
+    <input type="text" id="userName" name="userName">
     <br>
     <label for="subscriptionType">Subscription</label>
     <select name = "subscriptionType" id="subscriptionType">
@@ -22,8 +22,8 @@
     </select>
     <br>
     Card #:<br>
-    <input genre="number" id="cardNumber" name="cardNumber">
-    <input genre="submit" value="Submit">
+    <input type="number" id="cardNumber" name="cardNumber">
+    <input type="submit" value="Submit">
 </form>
 </body>
 </html>

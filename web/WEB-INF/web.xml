@@ -83,4 +83,14 @@
         <servlet-name>SearchPlaylists</servlet-name>
         <url-pattern>/SearchPlaylists</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RegisterGuest</servlet-name>
+        <servlet-class>servlets.RegisterGuest</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>RegisterGuest</servlet-name>
+        <url-pattern>/RegisterGuest</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -1,4 +1,4 @@
-public class AudioFeatures {
+public class Analytics {
 
     private double acousticness;
 

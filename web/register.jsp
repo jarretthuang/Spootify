@@ -26,6 +26,7 @@
 <a href='index.jsp'>
     <div class="hoja small-logo-topleft">
         <img class="music-note-small" src="${pageContext.request.contextPath}/frontend/assets/img/whiteMusicNote.png">
+        <div class="spootify-nametag">Spootify</div>
     </div>
 </a>
 <form action="RegisterUser" method="post" id="register-form" class="da-form">

@@ -23,21 +23,34 @@ body {
     background-color: black;
     display: grid;
     grid-template-rows: 1fr 350px 1fr;
-    grid-template-columns: 1fr min-content 1fr;
+    grid-template-columns: 1fr max-content 1fr;
     font-family: 'Helvetica', "Arial", sans-serif;
     color: white;
+}
+
+.small-logo-topleft {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    margin-left: -120px;
+    margin-top: -120px;
+    width: 120px;
+    height: 120px;
+}
+
+#logo-homepage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -120px;
+    margin-top: -120px;
+    width: 240px;
+    height: 240px;
 }
 
 .hoja {
      color: white;
      display: flex;
-     position: absolute;
-     top: 50%;
-     left: 50%;
-     margin-left: -120px;
-     margin-top: -120px;
-     width: 240px;
-     height: 240px;
  }
 .hoja:after,
 .hoja:before {
@@ -130,11 +143,11 @@ body {
 #music-note {
     width: 250px;
     margin: auto;
-    text-align: center;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 30px;
-  -webkit-font-smoothing: antialiased;
-  user-select: none;
+}
+
+.music-note-small {
+    width: 110px;
+    margin: auto;
 }
 
 #spootify-name {
@@ -170,20 +183,27 @@ body {
     
 }
 
-#register-button {
+#home-buttons {
     align-self: start;
     grid-column: 2 / 3;
     grid-row: 3/ 4;
+    justify-self: center;
+    display: grid;
+    grid-column-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+}
+
+#register-button {
+    align-self: start;
+    grid-column: 1 / 2;
     justify-self: start;
 }
 
 #login-button {
     align-self: start;
     grid-column: 2 / 3;
-    grid-row: 3/ 4;
     justify-self: end;
 }
-
 
 .minimal-button:hover {
     color: #000000;
@@ -199,7 +219,7 @@ body {
 
 
 
-#da-form input {
+.form-input {
     box-sizing: border-box;
     padding: 0 40px 0 10px;
     width: 250px;
@@ -237,7 +257,7 @@ body {
     user-select: none;
 }
 
-#guest-login {
+.form-sub-title {
     color: white;
     font-family: 'Open Sans', sans-serif;
     align-self: center;
@@ -254,9 +274,9 @@ body {
     text-decoration: underline;
 }
 
-#da-form {
+.da-form {
     display: grid;
-    grid-template-rows: 50px 1fr 1fr;
+    grid-template-rows: 90px;
     grid-row-gap: 10px;
     grid-template-columns: 1fr min-content 1fr;
 }
@@ -265,6 +285,7 @@ body {
     align-self: center;
     justify-self: end;
     grid-column: 2/3;
+    margin-top: 20px;
 }
 
 #copy-right {
@@ -275,6 +296,7 @@ body {
     grid-row: 3/4;
     font-weight: 100 !important;
     align-self: end;
+    justify-self: center;
     white-space: nowrap;
     margin-bottom: 20px;
     pointer-events: none;
@@ -356,4 +378,19 @@ body {
 .submit-button:hover .submit-text {
     color: #b0bec5;
     text-decoration: underline;
+}
+
+#register-form {
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.form-select .select-items {
+    background-color: red;
 }

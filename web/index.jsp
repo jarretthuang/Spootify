@@ -24,22 +24,24 @@
 </head>
 
 <body>
-<div class="hoja">
+<div class="hoja" id="logo-homepage">
   <img id="music-note" src="${pageContext.request.contextPath}/frontend/assets/img/whiteMusicNote.png">
 </div>
 <div id="spootify-name">Spootify</div>
-<a href='register.jsp' id="register-button" ><div class="minimal-button">SIGN UP</div></a>
-<div id="login-button" class="minimal-button">LOG IN</div>
+<div id="home-buttons">
+  <a href='register.jsp' id="register-button" ><div class="minimal-button">SIGN UP</div></a>
+  <div id="login-button" class="minimal-button">LOG IN</div>
+</div>
 <span id="copy-right" class="noselect">© 2019 BARELY LEGAL. ALL RIGHTS RESERVED.</span>
 <div id="login-form">
 
-  <form action="viewProfile.jsp" method="POST" id="da-form">
+  <form action="viewProfile.jsp" method="POST" class="da-form">
     <span id="form-title">Your Spootify</span>
-    <input id="userID" name="userID" type="text" placeholder="Your User ID" required>
+    <input id="userID" class="form-input" name="userID" type="text" placeholder="Your User ID" required>
     <div class="submit-button-wrapper">
       <button type="submit" class="submit-button"><div class="submit-text">Sign Me In</div><img class="check-submit" src="${pageContext.request.contextPath}/frontend/assets/img/whiteCheck.png"></button>
     </div>
-    <a href="guest.jsp" id="guest-login"><span>Just wanna listen? Sign in as guest!</span></a>
+    <a href="guest.jsp" id="guest-login" class="form-sub-title"><span>Just wanna listen? Sign in as guest!</span></a>
   </form>
 
 </div>

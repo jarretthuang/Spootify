@@ -36,6 +36,9 @@ public class UpdateProfile extends HttpServlet {
             e.printStackTrace();
         }
 
+        request.getSession().setAttribute("updateProfile", "Profile pic updated!");
+        request.getSession().setAttribute("userID", userId);
+        request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
 
     }
 

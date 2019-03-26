@@ -1,4 +1,11 @@
+
+<%@ page import="java.sql.Connection" %>
+<%@ page import="Utility.DBConnection" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="java.sql.ResultSet" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: ashleybarkworth
@@ -42,6 +49,11 @@
         <br>
         <input type="submit" value="Submit">
     </form>
+
+    <c:if test="${updateName ne null}">
+        <c:out value="${updateName}"></c:out>
+    </c:if>
+
     <form action="UpdateProfile" method="post">
         Add/update image:<br>
         <input type="text" id="profilePic" name="profilePic">
@@ -49,6 +61,10 @@
         <br>
         <input type="submit" value="Submit">
     </form>
+
+    <c:if test="${updateProfile ne null}">
+        <c:out value="${updateProfile}"></c:out>
+    </c:if>
 
     <label for="discount">Add a discount:</label>
     <form action="AddDiscount" method="post">

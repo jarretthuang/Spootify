@@ -50,9 +50,6 @@ public class AddDiscount extends HttpServlet {
 
             }
 
-            request.getSession().setAttribute("addDiscount", "Discount Added!");
-            request.getSession().setAttribute("monthlyRate", monthlyRate);
-            request.getSession().setAttribute("userID", userId);
             request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
 
         } catch (Exception e) {

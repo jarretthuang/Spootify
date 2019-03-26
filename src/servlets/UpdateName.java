@@ -38,8 +38,7 @@ public class UpdateName extends HttpServlet {
             e.printStackTrace();
         }
 
-        request.getSession().setAttribute("updateName", "Name updated!");
-        request.getSession().setAttribute("userID", userId);
+        request.getSession().setAttribute("newName", newName);
         request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
     }
 

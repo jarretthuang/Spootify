@@ -17,12 +17,6 @@ public class AddTrack extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String[] selectedTracks = request.getParameterValues("track");
-
-        if (selectedTracks == null) {
-            request.getSession().setAttribute("failure", "No tracks selected");
-            request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
-        }
-
         int userId = Integer.parseInt(request.getParameter("userId").trim());
         Connection connection = null;
 

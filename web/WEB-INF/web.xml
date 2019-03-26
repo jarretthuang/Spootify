@@ -123,4 +123,14 @@
         <servlet-name>UpdateBalance</servlet-name>
         <url-pattern>/UpdateBalance</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ViewTracksByArtist</servlet-name>
+        <servlet-class>servlets.ViewTracksByArtist</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ViewTracksByArtist</servlet-name>
+        <url-pattern>/ViewTracksByArtist</url-pattern>
+    </servlet-mapping>
 </web-app>

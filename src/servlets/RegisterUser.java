@@ -61,7 +61,7 @@ public class RegisterUser extends HttpServlet {
                 stmt.close();
 
             } else {
-                System.out.println("CANT");
+
             }
 
             request.setAttribute("userId", userId);

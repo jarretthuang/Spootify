@@ -30,32 +30,33 @@
 </head>
 <body>
 
-<%--<%--%>
-    <%--int userId = Integer.parseInt(request.getParameter("userID"));--%>
-    <%--Connection connection = null;--%>
-    <%--String userName = "";--%>
+<%
+    int userId = Integer.parseInt(request.getParameter("userID"));
+    Connection connection = null;
+    String userName = "";
 
-    <%--String query = "SELECT * FROM spootify.SpootifyUser WHERE spootify.SpootifyUser.userId = ?";--%>
+    String query = "SELECT * FROM spootify.SpootifyUser WHERE spootify.SpootifyUser.userId = ?";
 
-    <%--try {--%>
-        <%--connection = DBConnection.getConnection();--%>
+    try {
+        connection = DBConnection.getConnection();
 
-        <%--if (connection != null) {--%>
-            <%--PreparedStatement statement = connection.prepareStatement(query);--%>
-            <%--statement.setInt(1, userId);--%>
-            <%--ResultSet rs = statement.executeQuery();--%>
+        if (connection != null) {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, userId);
+            ResultSet rs = statement.executeQuery();
 
-            <%--if (rs.next()) {--%>
-                <%--userName = rs.getString("name");--%>
-            <%--}--%>
+            if (rs.next()) {
+                userName = rs.getString("name");
+            }
 
-        <%--}--%>
+        }
 
-    <%--} catch (SQLException e) {--%>
-        <%--e.printStackTrace();--%>
-    <%--}--%>
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
 
-<%--%>--%>
+%>
+
 <a href='index.jsp'>
     <div class="hoja small-logo-topleft">
         <img class="music-note-small" src="${pageContext.request.contextPath}/frontend/assets/img/whiteMusicNote.png">
@@ -64,7 +65,6 @@
 </a>
 <div class="ui-panel">
     <h1>Welcome back, <%= userName%></h1>
-    <img id="profile-pic" src="">
     <form action="UpdateName" method="post">
         Update name:<br>
         <input type="text" id="newName" name="newName">

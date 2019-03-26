@@ -40,12 +40,11 @@ public class AddTrack extends HttpServlet {
 
             }
 
-            request.getSession().setAttribute("success", "Added!");
+            request.getSession().setAttribute("success", "Added all selected tracks!");
             request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
 
         } catch (SQLException e) {
-            request.getSession().setAttribute("failure", "Already added that song!");
-            request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
+
         }
 
     }

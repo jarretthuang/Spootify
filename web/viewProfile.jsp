@@ -39,35 +39,35 @@
 </a>
 <div class="ui-panel">
     <div class="welcome-back">Welcome back!</div>
-    <img class="profile-pic do-not-invert"
+    <img class="profile-pic do-not-invert" id="login-button"
          src="https://img1.ak.crunchyroll.com/i/spire3/3614810e9ada5235038e8deb4adc264c1447729591_large.jpg">
-    <div class="user-settings minimal-form">
-        <form action="UpdateName" method="post">
-            Update name:<br>
-            <input type="text" id="newName" name="newName">
+    <div class="popup-form minimal-form">
+        <div class="form-title title-padding">User Settings</div>
+        <form class="small-form" action="UpdateName" method="post">
+            <span class="form-sub-title">Update Username</span>
+            <input class="form-input" type="text" id="newName" name="newName" required>
             <input type="hidden" name="userId" value="<%=request.getParameter("userID")%>"/>
-            <br>
-            <input type="submit" value="Submit">
+            <button type="submit" class="minimal-button simple-button">Confirm</button>
         </form>
-        <form action="UpdateProfile" method="post">
-            Add/update image:<br>
-            <input type="text" id="profilePic" name="profilePic">
+        <form class="small-form" action="UpdateProfile" method="post">
+            <span class="form-sub-title">Update Profile Image</span>
+            <input class="form-input" type="text" id="profilePic" name="profilePic" required>
             <input type="hidden" name="userId" value="<%=request.getParameter("userID")%>"/>
-            <br>
-            <input type="submit" value="Submit">
+            <button type="submit" class="minimal-button simple-button">Confirm</button>
         </form>
-    </div>
-    <div class="song-browser">
-        <label for="discount">Add a discount:</label>
-        <form action="AddDiscount" method="post">
-            <select name="discount" id="discount" onchange="this.form.submit()">
+        <form class="small-form" action="AddDiscount" method="post">
+            <span class="form-sub-title">Apply Discount</span>
+            <select class="form-input form-select" name="discount" id="discount">
                 <option value="Student">Student</option>
                 <option value="Military">Military</option>
                 <option value="Family">Family</option>
             </select>
             <input type="hidden" name="userId" value="<%=request.getParameter("userID")%>"/>
+            <button type="submit" class="minimal-button simple-button">Confirm</button>
         </form>
-
+        <div class="title-padding"></div>
+    </div>
+    <div class="song-browser">
         <label for="viewTracks">View Tracks:</label>
         <form id="viewTracks" name="viewTracks" method="post" action="ViewTracks">
             <input type="hidden" name="userId" value="<%=request.getParameter("userID")%>">

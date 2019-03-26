@@ -30,7 +30,7 @@
     </div>
 </a>
 <form action="RegisterUser" method="post" id="register-form" class="da-form">
-    <span id="form-title">Sign Up for Spootify</span>
+    <span class="form-title">Sign Up for Spootify</span>
     <span class="form-sub-title">What should we call you?</span>
     <input type="text" class="form-input" id="userName" name="userName" required placeholder="Your username">
     <span class="form-sub-title">Choose your subscription:</span>

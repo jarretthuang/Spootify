@@ -151,7 +151,7 @@ body {
 
 .minimal-form {
     display: none;
-    background-color: black;
+    background-color: black!important;
     border: 1px white solid;
 }
 
@@ -237,7 +237,7 @@ body {
     grid-column: 2/3;
 }
 
-#form-title {
+.form-title {
     color: white;
     font-family: 'Open Sans', sans-serif;
     align-self: center;
@@ -436,6 +436,7 @@ input[type=number]::-webkit-outer-spin-button {
     -moz-border-radius: 50%;
     border-radius: 50%;
     width: 100px;
+    cursor: pointer;
 }
 
 .song-browser {
@@ -445,4 +446,40 @@ input[type=number]::-webkit-outer-spin-button {
 .user-settings {
     grid-column: 3/4;
     grid-row: 2/3;
+}
+
+.small-form {
+    display: grid;
+    grid-template-columns: 1fr min-content 10px;
+    grid-template-rows: 1fr 1fr;
+    grid-column-gap: 30px;
+}
+
+.small-form .form-sub-title {
+    grid-column: 1/3;
+    grid-row: 1/2;
+}
+
+.small-form .form-input {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    justify-self: end;
+}
+
+.small-form .minimal-button {
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+
+.simple-button {
+    background: black;
+}
+
+.simple-button:hover {
+    background-color: white;
+}
+
+.title-padding {
+    padding: 20px;
+    margin-bottom: 20px;
 }

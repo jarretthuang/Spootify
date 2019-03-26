@@ -93,4 +93,24 @@
         <servlet-name>RegisterGuest</servlet-name>
         <url-pattern>/RegisterGuest</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ViewAllTracks</servlet-name>
+        <servlet-class>servlets.ViewAllTracks</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ViewAllTracks</servlet-name>
+        <url-pattern>/ViewAllTracks</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddTrack</servlet-name>
+        <servlet-class>servlets.AddTrack</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AddTrack</servlet-name>
+        <url-pattern>/AddTrack</url-pattern>
+    </servlet-mapping>
 </web-app>

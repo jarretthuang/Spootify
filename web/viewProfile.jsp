@@ -33,6 +33,13 @@
 <body>
 
 
+<%
+
+    if (request.getParameter("userID") != null) {
+        request.getSession().setAttribute("userId", request.getParameter("userID"));
+    }
+
+%>
 <a href='index.jsp'>
     <div class="hoja small-logo-topleft">
         <img class="music-note-small" src="${pageContext.request.contextPath}/frontend/assets/img/whiteMusicNote.png">
@@ -53,11 +60,11 @@
     <c:if test="${updateName ne null}">
         <c:out value="${updateName}"></c:out>
     </c:if>
-
+    <br>
     <form action="UpdateProfile" method="post">
         Add/update image:<br>
         <input type="text" id="profilePic" name="profilePic">
-        <input type="hidden" name="userId" value="<%=request.getParameter("userID")%>" />
+        <input type="hidden" name="userId" value="${userId}" />
         <br>
         <input type="submit" value="Submit">
     </form>
@@ -65,23 +72,30 @@
     <c:if test="${updateProfile ne null}">
         <c:out value="${updateProfile}"></c:out>
     </c:if>
-
+    <br>
     <label for="discount">Add a discount:</label>
     <form action="AddDiscount" method="post">
         <select name = "discount" id="discount" onchange="this.form.submit()">
             <option value = "Student">Student</option>
             <option value = "Military">Military</option>
-            <option value = "Family">Family</option>
+            <option value = "Senior">Senior</option>
         </select>
-        <input type="hidden" name="userId" value="<%=request.getParameter("userID")%>" />
+        <input type="hidden" name="userId" value="${userId}" />
     </form>
 
+    <c:if test="${addDiscount ne null}">
+        <c:out value="${addDiscount}"></c:out>
+        <br>
+        <c:out value="Your new monthly rate is ${monthlyRate}"></c:out>
+    </c:if>
+    <br>
     <label for="viewTracks">View Tracks:</label>
     <form id="viewTracks" name="viewTracks" method="post" action="ViewTracks">
-        <input type="hidden" name="userId" value="<%=request.getParameter("userID")%>">
+        <input type="hidden" name="userId" value="${userId}">
         <button>View Tracks</button>
     </form>
 
+<<<<<<< HEAD
     <c:if test="${tracks ne null}">
         <table>
             <tr>
@@ -108,9 +122,20 @@
     <label for="addTracks">Add Tracks:</label>
     <form id="addTracks" name="addTracks" method="post" action="ViewAllTracks">
         <input type="hidden" name="userId" value="<%=request.getParameter("userID")%>">
+=======
+    <label for="addTracks">Add Tracks:</label>
+    <form id="addTracks" name="addTracks" method="post" action="AddTracks">
+>>>>>>> bug fixes for userId and changes to updateProfile & add discount
         <button>Add Tracks</button>
     </form>
+    
+    <label for="addTracksToPlaylist">Create Playlist:</label>
+    <form id="addTracksToPlaylist" name="addTracksToPlaylist" method="post" action="ViewTracksForPlaylist">
+        <input type="hidden" name="userId" value="${userId}">
+        <button>Select Tracks</button>
+    </form>
 
+<<<<<<< HEAD
     <c:if test="${allTracks ne null}">
         <form id="addTrack" name="addTrack" method="post" action="AddTrack">
             <input type="hidden" name="userId" value="${userId}">
@@ -146,6 +171,47 @@
         </c:if>
     </c:if>
 
+=======
+    <c:if test="${allTracksForPlaylist ne null}">
+        <form id="addTrack" name="addTrack" method="post" action="CreatePlaylist">
+            <input type="hidden" name="userId" value="${userId}">
+            <table>
+                <tr>
+                    <th>TrackId</th>
+                    <th>AnalyticsId</th>
+                    <th>AlbumId</th>
+                    <th>Name</th>
+                    <th>Duration</th>
+                    <th>Popularity</th>
+                </tr>
+                <c:forEach items="${allTracksForPlaylist}" var="item" varStatus="status">
+                    <tr>
+                        <td>${item.getTrackId()}</td>
+                        <td>${item.getAnalyticsId()}</td>
+                        <td>${item.getAlbumId()}</td>
+                        <td>${item.getName()}</td>
+                        <td>${item.getDuration()}</td>
+                        <td>${item.getPopularity()}</td>
+                        <td><div class="checkbox">
+                            <label><input type="checkbox" name="trackPlaylist" value="${item.getTrackId()}"></label></div></td>
+                    </tr>
+                </c:forEach>
+            </table>
+            <input type="text" name="description" value="Playlist Description">
+            <input type="hidden" name="userId" value="${userId}">
+            <input type="submit" value="Add Selected Tracks" />
+        </form>
+        <c:if test="${successCreate ne null}">
+            <td>${successCreate}</td>
+            <br>
+            <td>Playlist ID: ${playlistId}</td>
+        </c:if>
+        <c:if test="${failureCreate ne null}">
+            <td>${failureCreate}</td>
+        </c:if>
+    </c:if>
+    <br>
+>>>>>>> bug fixes for userId and changes to updateProfile & add discount
     <h3>Search Tracks, Artists, or Playlists</h3>
     <form id="searchTracks" name="searchTracks" method="post" action="SearchTracks">
         <label for="track">Title: </label><input type="text" id="track" name="track">

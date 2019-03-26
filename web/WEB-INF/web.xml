@@ -103,4 +103,34 @@
         <servlet-name>RegisterGuest</servlet-name>
         <url-pattern>/RegisterGuest</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ViewAllTracks</servlet-name>
+        <servlet-class>servlets.ViewAllTracks</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ViewAllTracks</servlet-name>
+        <url-pattern>/ViewAllTracks</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CreatePlaylist</servlet-name>
+        <servlet-class>servlets.CreatePlaylist</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CreatePlaylist</servlet-name>
+        <url-pattern>/CreatePlaylist</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ViewTracksForPlaylist</servlet-name>
+        <servlet-class>servlets.ViewTracksForPlaylist</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ViewTracksForPlaylist</servlet-name>
+        <url-pattern>/ViewTracksForPlaylist</url-pattern>
+    </servlet-mapping>
 </web-app>

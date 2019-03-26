@@ -30,7 +30,7 @@ public class AddDiscount extends HttpServlet {
             monthlyRate = 9.99;
         }
 
-        try {
+        try { // try
             connection = DBConnection.getConnection();
 
             if (connection != null) {

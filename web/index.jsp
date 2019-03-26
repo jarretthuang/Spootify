@@ -34,7 +34,6 @@
 </div>
 <span id="copy-right" class="noselect">© 2019 BARELY LEGAL. ALL RIGHTS RESERVED.</span>
 <div id="login-form">
-
   <form action="viewProfile.jsp" method="POST" class="da-form">
     <span id="form-title">Your Spootify</span>
     <input id="userID" class="form-input" name="userID" type="text" placeholder="Your User ID" required>
@@ -43,11 +42,7 @@
     </div>
     <a href="guest.jsp" id="guest-login" class="form-sub-title"><span>Just wanna listen? Sign in as guest!</span></a>
   </form>
-
 </div>
-
-
-
 </body>
 </html>
 

@@ -62,6 +62,7 @@
 </a>
 <div class="ui-panel">
     <h1>Welcome back, <%= userName%></h1>
+    <img id="profile-pic" src="">
     <form action="UpdateName" method="post">
         Update name:<br>
         <input type="text" id="newName" name="newName">

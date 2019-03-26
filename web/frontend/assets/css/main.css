@@ -396,3 +396,26 @@ input[type=number]::-webkit-outer-spin-button {
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
 }
+
+.register-success {
+    grid-column: 2/3;
+    grid-row: 2/3;
+    align-self: center;
+    justify-self: center;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.redirect-to-profile-button {
+    background: none;
+    font-size: 20px;
+    width: 80px;
+    height: 45px;
+    grid-column: 2/3;
+    margin-top: 50px;
+}
+
+.redirect-to-profile-button:hover {
+    background-color: white;
+}

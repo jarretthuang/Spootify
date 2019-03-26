@@ -2,7 +2,9 @@
 <%@ page import="Utility.DBConnection" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.SQLException" %>
-<%@ page import="java.sql.ResultSet" %><%--
+<%@ page import="java.sql.ResultSet" %>
+
+<%--
   Created by IntelliJ IDEA.
   User: ashleybarkworth
   Date: 2019-03-23
@@ -28,32 +30,32 @@
 </head>
 <body>
 
-<%
-    int userId = Integer.parseInt(request.getParameter("userID"));
-    Connection connection = null;
-    String userName = "";
+<%--<%--%>
+    <%--int userId = Integer.parseInt(request.getParameter("userID"));--%>
+    <%--Connection connection = null;--%>
+    <%--String userName = "";--%>
 
-    String query = "SELECT * FROM spootify.SpootifyUser WHERE spootify.SpootifyUser.userId = ?";
+    <%--String query = "SELECT * FROM spootify.SpootifyUser WHERE spootify.SpootifyUser.userId = ?";--%>
 
-    try {
-        connection = DBConnection.getConnection();
+    <%--try {--%>
+        <%--connection = DBConnection.getConnection();--%>
 
-        if (connection != null) {
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setInt(1, userId);
-            ResultSet rs = statement.executeQuery();
+        <%--if (connection != null) {--%>
+            <%--PreparedStatement statement = connection.prepareStatement(query);--%>
+            <%--statement.setInt(1, userId);--%>
+            <%--ResultSet rs = statement.executeQuery();--%>
 
-            if (rs.next()) {
-                userName = rs.getString("name");
-            }
+            <%--if (rs.next()) {--%>
+                <%--userName = rs.getString("name");--%>
+            <%--}--%>
 
-        }
+        <%--}--%>
 
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
+    <%--} catch (SQLException e) {--%>
+        <%--e.printStackTrace();--%>
+    <%--}--%>
 
-%>
+<%--%>--%>
 <a href='index.jsp'>
     <div class="hoja small-logo-topleft">
         <img class="music-note-small" src="${pageContext.request.contextPath}/frontend/assets/img/whiteMusicNote.png">
@@ -92,6 +94,11 @@
     <form id="viewTracks" name="viewTracks" method="post" action="ViewTracks">
         <input type="hidden" name="userId" value="<%=userId%>">
         <button>View Tracks</button>
+    </form>
+
+    <label for="addTracks">View Tracks:</label>
+    <form id="addTracks" name="addTracks" method="post" action="AddTracks">
+        <button>Add Tracks</button>
     </form>
 
     <h3>Search Tracks, Artists, or Playlists</h3>

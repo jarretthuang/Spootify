@@ -15,25 +15,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-@WebServlet(name = "ViewTracks", urlPatterns = {"/ViewTracks"})
-public class ViewTracks extends HttpServlet {
+@WebServlet(name = "AddTracks")
+public class AddTracks extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Connection connection = null;
-        int userId = Integer.parseInt(request.getParameter("userId"));
         ResultSet rs;
         ArrayList<TrackObj> tracks = new ArrayList<>();
 
-        String getSongs = "SELECT * " +
-                "FROM Track, StoresTrack, spootify.SpootifyUser " +
-                "WHERE Track.trackId = StoresTrack.trackId AND StoresTrack.userId = spootify.SpootifyUser.userId " +
-                "AND spootify.SpootifyUser.userId = ?";
+        String getAllSongs = "SELECT * FROM Track";
 
         try {
             connection = DBConnection.getConnection();
 
             if (connection != null) {
-                PreparedStatement statement = connection.prepareStatement(getSongs);
-                statement.setInt(1, userId);
+                PreparedStatement statement = connection.prepareStatement(getAllSongs);
                 rs = statement.executeQuery();
 
                 while (rs.next()) {
@@ -49,8 +44,7 @@ public class ViewTracks extends HttpServlet {
                 }
 
                 request.getSession().setAttribute("tracks", tracks);
-                request.getSession().setAttribute("userID", userId);
-                request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
+                request.getRequestDispatcher("/viewAllTracks.jsp").forward(request, response);
             }
 
 

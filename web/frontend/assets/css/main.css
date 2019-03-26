@@ -483,3 +483,7 @@ input[type=number]::-webkit-outer-spin-button {
     padding: 20px;
     margin-bottom: 20px;
 }
+
+.guest-container .small-form {
+    grid-template-columns: 1fr 120px 10px;
+}

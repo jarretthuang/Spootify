@@ -37,6 +37,10 @@ public class UpdateName extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        request.getSession().setAttribute("updateName", "Name updated!");
+        request.getSession().setAttribute("userID", userId);
+        request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

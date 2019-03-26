@@ -3,6 +3,7 @@
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="java.sql.ResultSet" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
 <%--
   Created by IntelliJ IDEA.
@@ -30,32 +31,6 @@
 </head>
 <body>
 
-<%
-    int userId = Integer.parseInt(request.getParameter("userID"));
-    Connection connection = null;
-    String userName = "";
-
-    String query = "SELECT * FROM spootify.SpootifyUser WHERE spootify.SpootifyUser.userId = ?";
-
-    try {
-        connection = DBConnection.getConnection();
-
-        if (connection != null) {
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setInt(1, userId);
-            ResultSet rs = statement.executeQuery();
-
-            if (rs.next()) {
-                userName = rs.getString("name");
-            }
-
-        }
-
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-
-%>
 
 <a href='index.jsp'>
     <div class="hoja small-logo-topleft">
@@ -64,21 +39,30 @@
     </div>
 </a>
 <div class="ui-panel">
-    <h1>Welcome back, <%= userName%></h1>
+    <h1>Welcome back!</h1>
     <form action="UpdateName" method="post">
         Update name:<br>
         <input type="text" id="newName" name="newName">
-        <input type="hidden" name="userId" value="<%=userId%>" />
+        <input type="hidden" name="userId" value="<%=request.getParameter("userID")%>" />
         <br>
         <input type="submit" value="Submit">
     </form>
+
+    <c:if test="${updateName ne null}">
+        <c:out value="${updateName}"></c:out>
+    </c:if>
+
     <form action="UpdateProfile" method="post">
         Add/update image:<br>
         <input type="text" id="profilePic" name="profilePic">
-        <input type="hidden" name="userId" value="<%=userId%>" />
+        <input type="hidden" name="userId" value="<%=request.getParameter("userID")%>" />
         <br>
         <input type="submit" value="Submit">
     </form>
+
+    <c:if test="${updateProfile ne null}">
+        <c:out value="${updateProfile}"></c:out>
+    </c:if>
 
     <label for="discount">Add a discount:</label>
     <form action="AddDiscount" method="post">
@@ -87,12 +71,12 @@
             <option value = "Military">Military</option>
             <option value = "Family">Family</option>
         </select>
-        <input type="hidden" name="userId" value="<%=userId%>" />
+        <input type="hidden" name="userId" value="<%=request.getParameter("userID")%>" />
     </form>
 
     <label for="viewTracks">View Tracks:</label>
     <form id="viewTracks" name="viewTracks" method="post" action="ViewTracks">
-        <input type="hidden" name="userId" value="<%=userId%>">
+        <input type="hidden" name="userId" value="<%=request.getParameter("userID")%>">
         <button>View Tracks</button>
     </form>
 

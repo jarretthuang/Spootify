@@ -64,7 +64,7 @@ public class RegisterUser extends HttpServlet {
 
             }
 
-            request.setAttribute("userId", userId);
+            request.getSession().setAttribute("userId", userId);
             request.getRequestDispatcher("/successRegister.jsp").forward(request, response);
 
         } catch (SQLException e) {

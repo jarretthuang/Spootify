@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class ViewTracks extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Connection connection = null;
-        int userId = Integer.parseInt(request.getParameter("userId"));
+        int userId = Integer.parseInt(request.getParameter("userId").trim());
         ResultSet rs;
         ArrayList<TrackObj> tracks = new ArrayList<>();
 
@@ -49,7 +49,7 @@ public class ViewTracks extends HttpServlet {
                 }
 
                 request.getSession().setAttribute("tracks", tracks);
-                request.getSession().setAttribute("userID", userId);
+                request.getSession().setAttribute("userId", userId);
                 request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
             }
 

@@ -15,13 +15,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-@WebServlet(name = "AddTracks")
-public class AddTracks extends HttpServlet {
+@WebServlet(name = "ViewAllTracks")
+public class ViewAllTracks extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Connection connection = null;
         ResultSet rs;
         ArrayList<TrackObj> tracks = new ArrayList<>();
-
+        int userId = Integer.parseInt(request.getParameter("userId").trim());
         String getAllSongs = "SELECT * FROM Track";
 
         try {
@@ -43,8 +43,9 @@ public class AddTracks extends HttpServlet {
                     tracks.add(track);
                 }
 
-                request.getSession().setAttribute("tracks", tracks);
-                request.getRequestDispatcher("/viewAllTracks.jsp").forward(request, response);
+                request.getSession().setAttribute("allTracks", tracks);
+                request.getSession().setAttribute("userId", userId);
+                request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
             }
 
 

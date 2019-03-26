@@ -75,7 +75,7 @@
     <button>View Tracks</button>
 </form>
 
-<label for="searchTracks">Search For Tracks:</label>
+<h3>Search Tracks, Artists, or Playlists</h3>
 <form id="searchTracks" name="searchTracks" method="post" action="SearchTracks">
     <label for="track">Title: </label><input type="text" id="track" name="track" />
     <button>Search Tracks</button><br>

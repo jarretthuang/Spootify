@@ -33,7 +33,7 @@ public class CheckBalance extends HttpServlet {
                     balance = rs.getInt("balance");
                 }
 
-                request.setAttribute("balance", balance);
+                request.getSession().setAttribute("balance", balance);
                 request.getRequestDispatcher("/guest.jsp").forward(request, response);
             }
 

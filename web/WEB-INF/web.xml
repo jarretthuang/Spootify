@@ -154,5 +154,4 @@
         <servlet-name>ViewTracksForPlaylist</servlet-name>
         <url-pattern>/ViewTracksForPlaylist</url-pattern>
     </servlet-mapping>
-
 </web-app>

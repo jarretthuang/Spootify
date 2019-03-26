@@ -1,4 +1,3 @@
-
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
 <%--
@@ -90,6 +89,7 @@
         <button>View Tracks</button>
     </form>
 
+
     <c:if test="${tracks ne null}">
         <table>
             <tr>
@@ -118,13 +118,6 @@
         <input type="hidden" name="userId" value="${userId}">
         <button>Add Tracks</button>
     </form>
-    
-    <label for="addTracksToPlaylist">Create Playlist:</label>
-    <form id="addTracksToPlaylist" name="addTracksToPlaylist" method="post" action="ViewTracksForPlaylist">
-        <input type="hidden" name="userId" value="${userId}">
-        <button>Select Tracks</button>
-    </form>
-
 
     <c:if test="${allTracks ne null}">
         <form id="addTrack" name="addTrack" method="post" action="AddTrack">
@@ -160,7 +153,13 @@
             <td>${failure}</td>
         </c:if>
     </c:if>
-
+    <br>
+    <label for="addTracksToPlaylist">Create Playlist:</label>
+    <form id="addTracksToPlaylist" name="addTracksToPlaylist" method="post" action="ViewTracksForPlaylist">
+        <input type="hidden" name="userId" value="${userId}">
+        <button>Select Tracks</button>
+    </form>
+    <br>
     <c:if test="${allTracksForPlaylist ne null}">
         <form id="addTrack" name="addTrack" method="post" action="CreatePlaylist">
             <input type="hidden" name="userId" value="${userId}">
@@ -199,8 +198,8 @@
             <td>${failureCreate}</td>
         </c:if>
     </c:if>
-    <br>
 
+    <br>
     <h3>Search Tracks, Artists, or Playlists</h3>
     <form id="searchTracks" name="searchTracks" method="post" action="SearchTracks">
         <label for="track">Title: </label><input type="text" id="track" name="track">

@@ -19,6 +19,12 @@ import java.util.ArrayList;
 public class CreatePlaylist extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String[] selectedTracks = request.getParameterValues("trackPlaylist");
+
+        if (selectedTracks == null) {
+            request.getSession().setAttribute("failure", "No tracks selected");
+            request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
+        }
+
         int userId = Integer.parseInt(request.getParameter("userId"));
         String playlist = request.getParameter("description");
         int playlistId = playlist.hashCode();

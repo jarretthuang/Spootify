@@ -153,7 +153,7 @@
     <servlet-mapping>
         <servlet-name>ViewTracksForPlaylist</servlet-name>
         <url-pattern>/ViewTracksForPlaylist</url-pattern>
-    </servlet-mapping>  
+    </servlet-mapping>
       
     <servlet>
         <servlet-name>ViewTracksByArtist</servlet-name>
@@ -164,4 +164,5 @@
         <servlet-name>ViewTracksByArtist</servlet-name>
         <url-pattern>/ViewTracksByArtist</url-pattern>
     </servlet-mapping>
+
 </web-app>

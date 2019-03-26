@@ -94,8 +94,7 @@
         <input type="hidden" name="userId" value="${userId}">
         <button>View Tracks</button>
     </form>
-
-
+    <br>
     <c:if test="${tracks ne null}">
         <table>
             <tr>
@@ -123,6 +122,12 @@
     <form id="addTracks" name="addTracks" method="post" action="ViewAllTracks">
         <input type="hidden" name="userId" value="${userId}">
         <button>Add Tracks</button>
+    </form>
+    
+    <label for="addTracksToPlaylist">Create Playlist:</label>
+    <form id="addTracksToPlaylist" name="addTracksToPlaylist" method="post" action="ViewTracksForPlaylist">
+        <input type="hidden" name="userId" value="${userId}">
+        <button>Select Tracks</button>
     </form>
 
     <c:if test="${allTracks ne null}">

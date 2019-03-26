@@ -1,9 +1,4 @@
 
-<%@ page import="java.sql.Connection" %>
-<%@ page import="Utility.DBConnection" %>
-<%@ page import="java.sql.PreparedStatement" %>
-<%@ page import="java.sql.SQLException" %>
-<%@ page import="java.sql.ResultSet" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
 <%--
@@ -52,7 +47,7 @@
         <label for="newName">Update name: </label>
         <br>
         <input type="text" id="newName" name="newName"/>
-        <input type="hidden" name="userId" value="<%=request.getParameter("userID")%>" />
+        <input type="hidden" name="userId" value="${userId}" />
         <br>
         <input type="submit" value="Submit">
     </form>
@@ -95,7 +90,6 @@
         <button>View Tracks</button>
     </form>
 
-<<<<<<< HEAD
     <c:if test="${tracks ne null}">
         <table>
             <tr>
@@ -121,11 +115,7 @@
 
     <label for="addTracks">Add Tracks:</label>
     <form id="addTracks" name="addTracks" method="post" action="ViewAllTracks">
-        <input type="hidden" name="userId" value="<%=request.getParameter("userID")%>">
-=======
-    <label for="addTracks">Add Tracks:</label>
-    <form id="addTracks" name="addTracks" method="post" action="AddTracks">
->>>>>>> bug fixes for userId and changes to updateProfile & add discount
+        <input type="hidden" name="userId" value="${userId}">
         <button>Add Tracks</button>
     </form>
     
@@ -135,7 +125,7 @@
         <button>Select Tracks</button>
     </form>
 
-<<<<<<< HEAD
+
     <c:if test="${allTracks ne null}">
         <form id="addTrack" name="addTrack" method="post" action="AddTrack">
             <input type="hidden" name="userId" value="${userId}">
@@ -171,7 +161,6 @@
         </c:if>
     </c:if>
 
-=======
     <c:if test="${allTracksForPlaylist ne null}">
         <form id="addTrack" name="addTrack" method="post" action="CreatePlaylist">
             <input type="hidden" name="userId" value="${userId}">
@@ -211,7 +200,7 @@
         </c:if>
     </c:if>
     <br>
->>>>>>> bug fixes for userId and changes to updateProfile & add discount
+
     <h3>Search Tracks, Artists, or Playlists</h3>
     <form id="searchTracks" name="searchTracks" method="post" action="SearchTracks">
         <label for="track">Title: </label><input type="text" id="track" name="track">

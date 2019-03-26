@@ -18,7 +18,12 @@ public class UpdateBalance extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Connection connection = null;
         int guestId = Integer.parseInt(request.getParameter("guestId"));
-        double newBalance = Double.parseDouble(request.getParameter("newBalance"));
+        double newBalance;
+        if (request.getParameter("newBalance").equals("")) {
+            newBalance = 0;
+        } else {
+            newBalance = Double.parseDouble(request.getParameter("newBalance"));
+        }
 
         String setBalance = "UPDATE spootify.Guest SET spootify.Guest.balance = ? WHERE spootify.Guest.userId = ?";
 
@@ -34,6 +39,7 @@ public class UpdateBalance extends HttpServlet {
 
 
                 request.getSession().setAttribute("newBalance", newBalance);
+                request.getSession().setAttribute("guestId", guestId);
                 request.getRequestDispatcher("/guest.jsp").forward(request, response);
             }
 

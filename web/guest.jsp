@@ -38,10 +38,19 @@
     <c:out value="Your balance is $${balance}"></c:out>
 </c:if>
 
-<form action="CheckBalance" method="post">
+<form action="UpdateBalance" method="post">
+    <label for="newBalance">New Balance: </label>
+    <input type="number" id="newBalance" name="newBalance">
     <input type="hidden" name="guestId" value="${guestId}" />
-    <input type="submit" name="balance" value="Check balance" />
+    <input type="submit" name="register" value="Update Balance" />
+    <br>
 </form>
+
+<c:if test="${newBalance ne null}">
+    <fmt:setLocale value="en_CA"/>
+    <fmt:formatNumber value="${newBalance}" type="currency" var="formattedNewBalance"/>
+    <c:out value="Your balance is ${formattedNewBalance}"></c:out>
+</c:if>
 
 </body>
 </html>

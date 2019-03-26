@@ -26,6 +26,13 @@
 <body>
 
 
+<%
+
+    if (request.getParameter("userID") != null) {
+        request.getSession().setAttribute("userId", request.getParameter("userID"));
+    }
+
+%>
 <a href='index.jsp'>
     <div class="hoja small-logo-topleft">
         <img class="music-note-small" src="${pageContext.request.contextPath}/frontend/assets/img/whiteMusicNote.png">
@@ -145,6 +152,37 @@
         <label for="playlist">Playlist Description: </label><input type="text" id="playlist" name="playlist" />
         <button>Search Playlists</button>
     </form>
+
+    <h3>View Tracks By Artist</h3>
+    <form id="searchTracksByArtist" name="searchTracksByArtist" method="post" action="ViewTracksByArtist">
+        <input type="hidden" name="userId" value="${userId}">
+        <label for="artist">Artist: </label><input type="text" id="artistSong" name="artistSong">
+        <button>Search Tracks by Artist</button><br>
+    </form>
+
+    <c:if test="${artistTracks ne null}">
+        <table>
+            <tr>
+                <th>TrackId</th>
+                <th>AnalyticsId</th>
+                <th>AlbumId</th>
+                <th>Name</th>
+                <th>Duration</th>
+                <th>Popularity</th>
+            </tr>
+            <c:forEach items="${artistTracks}" var="item">
+                <tr>
+                    <td>${item.getTrackId()}</td>
+                    <td>${item.getAnalyticsId()}</td>
+                    <td>${item.getAlbumId()}</td>
+                    <td>${item.getName()}</td>
+                    <td>${item.getDuration()}</td>
+                    <td>${item.getPopularity()}</td>
+                </tr>
+            </c:forEach>
+        </table>
+    </c:if>
+
 </div>
 </body>
 </html>

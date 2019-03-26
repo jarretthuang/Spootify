@@ -25,6 +25,16 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>UpdateProfile</servlet-name>
+        <servlet-class>servlets.UpdateProfile</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UpdateProfile</servlet-name>
+        <url-pattern>/UpdateProfile</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>AddDiscount</servlet-name>
         <servlet-class>servlets.AddDiscount</servlet-class>
     </servlet>
@@ -92,5 +102,56 @@
     <servlet-mapping>
         <servlet-name>RegisterGuest</servlet-name>
         <url-pattern>/RegisterGuest</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ViewAllTracks</servlet-name>
+        <servlet-class>servlets.ViewAllTracks</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ViewAllTracks</servlet-name>
+        <url-pattern>/ViewAllTracks</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+
+        <servlet-name>AddTrack</servlet-name>
+        <servlet-class>servlets.AddTrack</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AddTrack</servlet-name>
+        <url-pattern>/AddTrack</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdateBalance</servlet-name>
+        <servlet-class>servlets.UpdateBalance</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UpdateBalance</servlet-name>
+        <url-pattern>/UpdateBalance</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CreatePlaylist</servlet-name>
+        <servlet-class>servlets.CreatePlaylist</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CreatePlaylist</servlet-name>
+        <url-pattern>/CreatePlaylist</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ViewTracksForPlaylist</servlet-name>
+        <servlet-class>servlets.ViewTracksForPlaylist</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ViewTracksForPlaylist</servlet-name>
+        <url-pattern>/ViewTracksForPlaylist</url-pattern>
     </servlet-mapping>
 </web-app>

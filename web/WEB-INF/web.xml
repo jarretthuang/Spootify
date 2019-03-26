@@ -113,4 +113,14 @@
         <servlet-name>AddTrack</servlet-name>
         <url-pattern>/AddTrack</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdateBalance</servlet-name>
+        <servlet-class>servlets.UpdateBalance</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UpdateBalance</servlet-name>
+        <url-pattern>/UpdateBalance</url-pattern>
+    </servlet-mapping>
 </web-app>

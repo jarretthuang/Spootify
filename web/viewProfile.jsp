@@ -1,9 +1,4 @@
-<%@ page import="java.sql.Connection" %>
-<%@ page import="Utility.DBConnection" %>
-<%@ page import="java.sql.PreparedStatement" %>
-<%@ page import="java.sql.SQLException" %>
-<%@ page import="java.sql.ResultSet" %>
-
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: ashleybarkworth
@@ -30,32 +25,6 @@
 </head>
 <body>
 
-<%
-    int userId = Integer.parseInt(request.getParameter("userID"));
-    Connection connection = null;
-    String userName = "";
-
-    String query = "SELECT * FROM spootify.SpootifyUser WHERE spootify.SpootifyUser.userId = ?";
-
-    try {
-        connection = DBConnection.getConnection();
-
-        if (connection != null) {
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setInt(1, userId);
-            ResultSet rs = statement.executeQuery();
-
-            if (rs.next()) {
-                userName = rs.getString("name");
-            }
-
-        }
-
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-
-%>
 
 <a href='index.jsp'>
     <div class="hoja small-logo-topleft">
@@ -64,18 +33,19 @@
     </div>
 </a>
 <div class="ui-panel">
-    <h1>Welcome back, <%= userName%></h1>
+    <h1>Welcome back!</h1>
     <form action="UpdateName" method="post">
-        Update name:<br>
-        <input type="text" id="newName" name="newName">
-        <input type="hidden" name="userId" value="<%=userId%>" />
+        <label for="newName">Update name: </label>
+        <br>
+        <input type="text" id="newName" name="newName"/>
+        <input type="hidden" name="userId" value="<%=request.getParameter("userID")%>" />
         <br>
         <input type="submit" value="Submit">
     </form>
     <form action="UpdateProfile" method="post">
         Add/update image:<br>
         <input type="text" id="profilePic" name="profilePic">
-        <input type="hidden" name="userId" value="<%=userId%>" />
+        <input type="hidden" name="userId" value="<%=request.getParameter("userID")%>" />
         <br>
         <input type="submit" value="Submit">
     </form>
@@ -87,28 +57,87 @@
             <option value = "Military">Military</option>
             <option value = "Family">Family</option>
         </select>
-        <input type="hidden" name="userId" value="<%=userId%>" />
+        <input type="hidden" name="userId" value="<%=request.getParameter("userID")%>" />
     </form>
 
     <label for="viewTracks">View Tracks:</label>
     <form id="viewTracks" name="viewTracks" method="post" action="ViewTracks">
-        <input type="hidden" name="userId" value="<%=userId%>">
+        <input type="hidden" name="userId" value="<%=request.getParameter("userID")%>">
         <button>View Tracks</button>
     </form>
 
-    <label for="addTracks">View Tracks:</label>
-    <form id="addTracks" name="addTracks" method="post" action="AddTracks">
+    <c:if test="${tracks ne null}">
+        <table>
+            <tr>
+                <th>TrackId</th>
+                <th>AnalyticsId</th>
+                <th>AlbumId</th>
+                <th>Name</th>
+                <th>Duration</th>
+                <th>Popularity</th>
+            </tr>
+            <c:forEach items="${tracks}" var="item">
+                <tr>
+                    <td>${item.getTrackId()}</td>
+                    <td>${item.getAnalyticsId()}</td>
+                    <td>${item.getAlbumId()}</td>
+                    <td>${item.getName()}</td>
+                    <td>${item.getDuration()}</td>
+                    <td>${item.getPopularity()}</td>
+                </tr>
+            </c:forEach>
+        </table>
+    </c:if>
+
+    <label for="addTracks">Add Tracks:</label>
+    <form id="addTracks" name="addTracks" method="post" action="ViewAllTracks">
+        <input type="hidden" name="userId" value="<%=request.getParameter("userID")%>">
         <button>Add Tracks</button>
     </form>
 
+    <c:if test="${allTracks ne null}">
+        <form id="addTrack" name="addTrack" method="post" action="AddTrack">
+            <input type="hidden" name="userId" value="${userId}">
+        <table>
+            <tr>
+                <th>TrackId</th>
+                <th>AnalyticsId</th>
+                <th>AlbumId</th>
+                <th>Name</th>
+                <th>Duration</th>
+                <th>Popularity</th>
+            </tr>
+            <c:forEach items="${allTracks}" var="item" varStatus="status">
+                <tr>
+                    <td>${item.getTrackId()}</td>
+                    <td>${item.getAnalyticsId()}</td>
+                    <td>${item.getAlbumId()}</td>
+                    <td>${item.getName()}</td>
+                    <td>${item.getDuration()}</td>
+                    <td>${item.getPopularity()}</td>
+                    <td><div class="checkbox">
+                        <label><input type="checkbox" name="track" value="${item.getTrackId()}"></label></div></td>
+                </tr>
+            </c:forEach>
+        </table>
+            <input type="submit" value="Add Selected Tracks" />
+        </form>
+        <c:if test="${success ne null}">
+            <td>${success}</td>
+        </c:if>
+        <c:if test="${failure ne null}">
+            <td>${failure}</td>
+        </c:if>
+    </c:if>
+
     <h3>Search Tracks, Artists, or Playlists</h3>
     <form id="searchTracks" name="searchTracks" method="post" action="SearchTracks">
-        <label for="track">Title: </label><input type="text" id="track" name="track" />
+        <label for="track">Title: </label><input type="text" id="track" name="track">
         <button>Search Tracks</button><br>
     </form>
 
     <form id="searchArtists" name="searchArtists" method="post" action="SearchArtists">
-        <label for="artist">Artist: </label><input type="text" id="artist" name="artist" />
+        <label for="artist">Artist: </label><input type="text" id="artist" name="artist">
         <button>Search Artists</button><br>
     </form>
 

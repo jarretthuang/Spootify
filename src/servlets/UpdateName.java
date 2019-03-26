@@ -32,11 +32,14 @@ public class UpdateName extends HttpServlet {
                 statement.executeUpdate();
 
             } else {
-                System.out.println("CANT");
+
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        request.getSession().setAttribute("newName", newName);
+        request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -47,7 +47,9 @@
 </form>
 
 <c:if test="${newBalance ne null}">
-    <c:out value="Your balance is $${newBalance}"></c:out>
+    <fmt:setLocale value="en_CA"/>
+    <fmt:formatNumber value="${newBalance}" type="currency" var="formattedNewBalance"/>
+    <c:out value="Your balance is ${formattedNewBalance}"></c:out>
 </c:if>
 
 </body>

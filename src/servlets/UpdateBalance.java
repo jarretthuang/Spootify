@@ -30,7 +30,7 @@ public class UpdateBalance extends HttpServlet {
                 statement.setDouble(1, newBalance);
                 statement.setInt(2, guestId);
 
-                statement.executeQuery();
+                statement.executeUpdate();
 
 
                 request.getSession().setAttribute("newBalance", newBalance);

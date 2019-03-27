@@ -53,26 +53,23 @@
             <input class="form-input" type="text" id="newName" name="newName" required>
             <input type="hidden" name="userId" value="${userId}"/>
             <button type="submit" class="minimal-button simple-button">Confirm</button>
+            <div class="form-sub-title">
+                <c:if test="${updateName ne null}">
+                    <c:out value="${updateName}"></c:out>
+                </c:if>
+            </div>
         </form>
-
-        <c:if test="${updateName ne null}">
-            <c:out value="${updateName}"></c:out>
-        </c:if>
-
-
         <form class="small-form" action="UpdateProfile" method="post">
             <span class="form-sub-title">Update Profile Image</span>
             <input class="form-input" type="text" id="profilePic" name="profilePic" required>
             <input type="hidden" name="userId" value="${userId}"/>
             <button type="submit" class="minimal-button simple-button">Confirm</button>
+            <div class="form-sub-title">
+                <c:if test="${updateProfile ne null}">
+                    <c:out value="${updateProfile}"></c:out>
+                </c:if>
+            </div>
         </form>
-
-
-
-        <c:if test="${updateProfile ne null}">
-            <c:out value="${updateProfile}"></c:out>
-        </c:if>
-
         <form class="small-form" action="AddDiscount" method="post">
             <span class="form-sub-title">Apply Discount</span>
             <select class="form-input form-select" name="discount" id="discount">
@@ -82,15 +79,14 @@
             </select>
             <input type="hidden" name="userId" value="${userId}"/>
             <button type="submit" class="minimal-button simple-button">Confirm</button>
+            <div class="form-sub-title">
+                <c:if test="${addDiscount ne null}">
+                    <c:out value="${addDiscount}"></c:out>
+                    <br>
+                    <c:out value="Your new monthly rate is ${monthlyRate}"></c:out>
+                </c:if>
+            </div>
         </form>
-
-        <c:if test="${addDiscount ne null}">
-            <c:out value="${addDiscount}"></c:out>
-            <br>
-            <c:out value="Your new monthly rate is ${monthlyRate}"></c:out>
-        </c:if>
-
-
         <div class="title-padding"></div>
     </div>
     <div class="song-browser">

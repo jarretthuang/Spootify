@@ -48,7 +48,7 @@ public class ViewTracks extends HttpServlet {
                     tracks.add(track);
                 }
 
-                request.getSession().setAttribute("tracks", tracks);
+                request.getSession().setAttribute("tracksStoredByUser", tracks);
                 request.getSession().setAttribute("userId", userId);
                 request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
             }

@@ -15,29 +15,36 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-@WebServlet(name = "SearchPlaylists", urlPatterns = {"SearchPlaylists"})
-public class SearchPlaylists extends HttpServlet {
+@WebServlet(name = "ViewPlaylists", urlPatterns = {"ViewPlaylists"})
+public class ViewPlaylists extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Connection connection = null;
-        String playlistDescription = request.getParameter("playlist");
         int userId = Integer.parseInt(request.getParameter("userId"));
         ResultSet rs;
         ArrayList<PlayList> playlists = new ArrayList<>();
         ArrayList<Integer> numSongs = new ArrayList<>();
 
-        String getSongs = "SELECT Playlist.playlistId, Playlist.description, Playlist.isPublic, COUNT(*) AS NumSongs "+
-                "FROM Playlist " +
-                "LEFT JOIN spootify.TrackInPlaylist ON Playlist.playlistId = spootify.TrackInPlaylist.playlistId " +
-                "WHERE Playlist.description LIKE ? " +
-                "GROUP BY Playlist.playlistId, Playlist.description, Playlist.isPublic";
+        String getPlaylistsFromUserView = "CREATE OR REPLACE VIEW playlists_user_follows AS " +
+                "SELECT Playlist.playlistId, Playlist.description, Playlist.isPublic, FollowsPlaylist.userId " +
+                "FROM Playlist, FollowsPlaylist " +
+                "WHERE Playlist.playlistId = FollowsPlaylist.playlistId AND Playlist.isPublic = \'Y\'";
+
+        String getSongs = "SELECT playlists_user_follows.playlistId, playlists_user_follows.description, " +
+                "playlists_user_follows.isPublic, COUNT(*) AS NumSongs "+
+                "FROM playlists_user_follows, SpootifyUser " +
+                "WHERE SpootifyUser.userId = ? AND playlists_user_follows.userId = SpootifyUser.userId " +
+                "GROUP BY playlists_user_follows.playlistId, playlists_user_follows.description, playlists_user_follows.isPublic";
 
         try {
             connection = DBConnection.getConnection();
 
             if (connection != null) {
-                PreparedStatement statement = connection.prepareStatement(getSongs);
-                statement.setString(1, "%" + playlistDescription + "%");
-                rs = statement.executeQuery();
+                PreparedStatement statement = connection.prepareStatement(getPlaylistsFromUserView);
+                PreparedStatement statement1 = connection.prepareStatement(getSongs);
+                statement1.setInt(1, userId);
+
+                statement.executeUpdate();
+                rs = statement1.executeQuery();
 
                 while (rs.next()) {
                     PlayList playlist = new PlayList();
@@ -48,10 +55,10 @@ public class SearchPlaylists extends HttpServlet {
                     numSongs.add(rs.getInt("NumSongs"));
                 }
 
-                request.getSession().setAttribute("playlists", playlists);
+                request.getSession().setAttribute("userPlaylists", playlists);
                 request.getSession().setAttribute("numSongs", numSongs);
-                request.getSession().setAttribute("userId", userId);
-                request.getRequestDispatcher("/searchPlaylists.jsp").forward(request, response);
+
+                request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
             }
 
 

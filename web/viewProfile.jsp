@@ -1,3 +1,9 @@
+
+<%@ page import="java.sql.Connection" %>
+<%@ page import="Utility.DBConnection" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="Utility.DBConnection" %>
 <%@ page import="java.sql.PreparedStatement" %>
@@ -27,6 +33,14 @@
     <script src="${pageContext.request.contextPath}/frontend/assets/javascript/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
+
+
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/frontend/assets/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/frontend/assets/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/frontend/assets/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/frontend/assets/css/util.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/frontend/assets/css/table.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/frontend/assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -36,14 +50,13 @@
     }
 %>
 
-<a href='index.jsp'>
-    <div class="hoja small-logo-topleft">
-        <img class="music-note-small" src="${pageContext.request.contextPath}/frontend/assets/img/whiteMusicNote.png">
-        <div class="spootify-nametag">Spootify</div>
-    </div>
-</a>
 <div class="ui-panel">
-    <div class="welcome-back">Welcome back!</div>
+    <a href='index.jsp'>
+            <div class="hoja small-logo-topleft">
+                <img class="music-note-small" src="${pageContext.request.contextPath}/frontend/assets/img/whiteMusicNote.png">
+                <div class="spootify-nametag">Spootify</div>
+            </div>
+        </a>
     <img class="profile-pic do-not-invert" id="login-button"
          src="https://img1.ak.crunchyroll.com/i/spire3/3614810e9ada5235038e8deb4adc264c1447729591_large.jpg">
     <div class="popup-form minimal-form">
@@ -90,6 +103,209 @@
         <div class="title-padding"></div>
     </div>
     <div class="song-browser">
+        <div class="wrap-table100">
+                    <div class="table100 ver5 m-b-110">
+                        <div class="table100-head">
+                            <table>
+                                <thead>
+                                <tr class="row100 head">
+                                    <th class="cell100 column1">Class name</th>
+                                    <th class="cell100 column2">Type</th>
+                                    <th class="cell100 column3">Hours</th>
+                                    <th class="cell100 column4">Trainer</th>
+                                    <th class="cell100 column5">Spots</th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                        <div class="table100-body js-pscroll">
+                            <table>
+                                <tbody>
+                                <tr class="row100 body">
+                                    <td class="cell100 column1">Like a butterfly</td>
+                                    <td class="cell100 column2">Boxing</td>
+                                    <td class="cell100 column3">9:00 AM - 11:00 AM</td>
+                                    <td class="cell100 column4">Aaron Chapman</td>
+                                    <td class="cell100 column5">10</td>
+                                </tr>
+
+                                <tr class="row100 body">
+                                    <td class="cell100 column1">Mind & Body</td>
+                                    <td class="cell100 column2">Yoga</td>
+                                    <td class="cell100 column3">8:00 AM - 9:00 AM</td>
+                                    <td class="cell100 column4">Adam Stewart</td>
+                                    <td class="cell100 column5">15</td>
+                                </tr>
+
+                                <tr class="row100 body">
+                                    <td class="cell100 column1">Crit Cardio</td>
+                                    <td class="cell100 column2">Gym</td>
+                                    <td class="cell100 column3">9:00 AM - 10:00 AM</td>
+                                    <td class="cell100 column4">Aaron Chapman</td>
+                                    <td class="cell100 column5">10</td>
+                                </tr>
+
+                                <tr class="row100 body">
+                                    <td class="cell100 column1">Wheel Pose Full Posture</td>
+                                    <td class="cell100 column2">Yoga</td>
+                                    <td class="cell100 column3">7:00 AM - 8:30 AM</td>
+                                    <td class="cell100 column4">Donna Wilson</td>
+                                    <td class="cell100 column5">15</td>
+                                </tr>
+
+                                <tr class="row100 body">
+                                    <td class="cell100 column1">Playful Dancer's Flow</td>
+                                    <td class="cell100 column2">Yoga</td>
+                                    <td class="cell100 column3">8:00 AM - 9:00 AM</td>
+                                    <td class="cell100 column4">Donna Wilson</td>
+                                    <td class="cell100 column5">10</td>
+                                </tr>
+
+                                <tr class="row100 body">
+                                    <td class="cell100 column1">Zumba Dance</td>
+                                    <td class="cell100 column2">Dance</td>
+                                    <td class="cell100 column3">5:00 PM - 7:00 PM</td>
+                                    <td class="cell100 column4">Donna Wilson</td>
+                                    <td class="cell100 column5">20</td>
+                                </tr>
+
+                                <tr class="row100 body">
+                                    <td class="cell100 column1">Cardio Blast</td>
+                                    <td class="cell100 column2">Gym</td>
+                                    <td class="cell100 column3">5:00 PM - 7:00 PM</td>
+                                    <td class="cell100 column4">Randy Porter</td>
+                                    <td class="cell100 column5">10</td>
+                                </tr>
+
+                                <tr class="row100 body">
+                                    <td class="cell100 column1">Pilates Reformer</td>
+                                    <td class="cell100 column2">Gym</td>
+                                    <td class="cell100 column3">8:00 AM - 9:00 AM</td>
+                                    <td class="cell100 column4">Randy Porter</td>
+                                    <td class="cell100 column5">10</td>
+                                </tr>
+
+                                <tr class="row100 body">
+                                    <td class="cell100 column1">Supple Spine and Shoulders</td>
+                                    <td class="cell100 column2">Yoga</td>
+                                    <td class="cell100 column3">6:30 AM - 8:00 AM</td>
+                                    <td class="cell100 column4">Randy Porter</td>
+                                    <td class="cell100 column5">15</td>
+                                </tr>
+
+                                <tr class="row100 body">
+                                    <td class="cell100 column1">Yoga for Divas</td>
+                                    <td class="cell100 column2">Yoga</td>
+                                    <td class="cell100 column3">9:00 AM - 11:00 AM</td>
+                                    <td class="cell100 column4">Donna Wilson</td>
+                                    <td class="cell100 column5">20</td>
+                                </tr>
+
+                                <tr class="row100 body">
+                                    <td class="cell100 column1">Virtual Cycle</td>
+                                    <td class="cell100 column2">Gym</td>
+                                    <td class="cell100 column3">8:00 AM - 9:00 AM</td>
+                                    <td class="cell100 column4">Randy Porter</td>
+                                    <td class="cell100 column5">20</td>
+                                </tr>
+
+                                <tr class="row100 body">
+                                    <td class="cell100 column1">Like a butterfly</td>
+                                    <td class="cell100 column2">Boxing</td>
+                                    <td class="cell100 column3">9:00 AM - 11:00 AM</td>
+                                    <td class="cell100 column4">Aaron Chapman</td>
+                                    <td class="cell100 column5">10</td>
+                                </tr>
+
+                                <tr class="row100 body">
+                                    <td class="cell100 column1">Mind & Body</td>
+                                    <td class="cell100 column2">Yoga</td>
+                                    <td class="cell100 column3">8:00 AM - 9:00 AM</td>
+                                    <td class="cell100 column4">Adam Stewart</td>
+                                    <td class="cell100 column5">15</td>
+                                </tr>
+
+                                <tr class="row100 body">
+                                    <td class="cell100 column1">Crit Cardio</td>
+                                    <td class="cell100 column2">Gym</td>
+                                    <td class="cell100 column3">9:00 AM - 10:00 AM</td>
+                                    <td class="cell100 column4">Aaron Chapman</td>
+                                    <td class="cell100 column5">10</td>
+                                </tr>
+
+                                <tr class="row100 body">
+                                    <td class="cell100 column1">Wheel Pose Full Posture</td>
+                                    <td class="cell100 column2">Yoga</td>
+                                    <td class="cell100 column3">7:00 AM - 8:30 AM</td>
+                                    <td class="cell100 column4">Donna Wilson</td>
+                                    <td class="cell100 column5">15</td>
+                                </tr>
+
+                                <tr class="row100 body">
+                                    <td class="cell100 column1">Playful Dancer's Flow</td>
+                                    <td class="cell100 column2">Yoga</td>
+                                    <td class="cell100 column3">8:00 AM - 9:00 AM</td>
+                                    <td class="cell100 column4">Donna Wilson</td>
+                                    <td class="cell100 column5">10</td>
+                                </tr>
+
+                                <tr class="row100 body">
+                                    <td class="cell100 column1">Zumba Dance</td>
+                                    <td class="cell100 column2">Dance</td>
+                                    <td class="cell100 column3">5:00 PM - 7:00 PM</td>
+                                    <td class="cell100 column4">Donna Wilson</td>
+                                    <td class="cell100 column5">20</td>
+                                </tr>
+
+                                <tr class="row100 body">
+                                    <td class="cell100 column1">Cardio Blast</td>
+                                    <td class="cell100 column2">Gym</td>
+                                    <td class="cell100 column3">5:00 PM - 7:00 PM</td>
+                                    <td class="cell100 column4">Randy Porter</td>
+                                    <td class="cell100 column5">10</td>
+                                </tr>
+
+                                <tr class="row100 body">
+                                    <td class="cell100 column1">Pilates Reformer</td>
+                                    <td class="cell100 column2">Gym</td>
+                                    <td class="cell100 column3">8:00 AM - 9:00 AM</td>
+                                    <td class="cell100 column4">Randy Porter</td>
+                                    <td class="cell100 column5">10</td>
+                                </tr>
+
+                                <tr class="row100 body">
+                                    <td class="cell100 column1">Supple Spine and Shoulders</td>
+                                    <td class="cell100 column2">Yoga</td>
+                                    <td class="cell100 column3">6:30 AM - 8:00 AM</td>
+                                    <td class="cell100 column4">Randy Porter</td>
+                                    <td class="cell100 column5">15</td>
+                                </tr>
+
+                                <tr class="row100 body">
+                                    <td class="cell100 column1">Yoga for Divas</td>
+                                    <td class="cell100 column2">Yoga</td>
+                                    <td class="cell100 column3">9:00 AM - 11:00 AM</td>
+                                    <td class="cell100 column4">Donna Wilson</td>
+                                    <td class="cell100 column5">20</td>
+                                </tr>
+
+                                <tr class="row100 body">
+                                    <td class="cell100 column1">Virtual Cycle</td>
+                                    <td class="cell100 column2">Gym</td>
+                                    <td class="cell100 column3">8:00 AM - 9:00 AM</td>
+                                    <td class="cell100 column4">Randy Porter</td>
+                                    <td class="cell100 column5">20</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+    </div>
+
+    <div style="display: none;">
+
         <label for="viewTracks">View Tracks:</label>
         <form id="viewTracks" name="viewTracks" method="post" action="ViewTracks">
             <input type="hidden" name="userId" value="${userId}">
@@ -119,13 +335,55 @@
             </table>
         </c:if>
 
-        <label for="addTracks">Add Tracks:</label>
-        <form id="addTracks" name="addTracks" method="post" action="ViewAllTracks">
+        <c:if test="${tracks ne null}">
+        <form id="deleteTrack" name="deleteTrack" method="post" action="DeleteTrack">
             <input type="hidden" name="userId" value="${userId}">
-            <button>Add Tracks</button>
-        </form>
+            <table>
+                <tr>
+                    <th>TrackId</th>
+                    <th>AnalyticsId</th>
+                    <th>AlbumId</th>
+                    <th>Name</th>
+                    <th>Duration</th>
+                    <th>Popularity</th>
+                </tr>
+                <c:forEach items="${tracks}" var="item">
+                    <tr>
+                        <td>${item.getTrackId()}</td>
+                        <td>${item.getAnalyticsId()}</td>
+                        <td>${item.getAlbumId()}</td>
+                        <td>${item.getName()}</td>
+                        <td>${item.getDuration()}</td>
+                        <td>${item.getPopularity()}</td>
+                        <td><div class="checkbox">
+                            <label><input type="checkbox" name="track" value="${item.getTrackId()}"></label></div></td>
+                    </tr>
+                </c:forEach>
+            </table>
+            <input type="submit" value="Delete Tracks" />
+            <br>
+            <c:if test="${successDelete ne null}">
+            <td>${successDelete}</td>
+            </c:if>
+            <c:if test="${failureDelete ne null}">
+            <td>${failureDelete}</td>
+            </c:if>
+            </c:if>
 
-        <c:if test="${allTracks ne null}">
+
+            <label for="addTracks">Add Tracks:</label>
+            <form id="addTracks" name="addTracks" method="post" action="ViewAllTracks">
+                <input type="hidden" name="userId" value="${userId}">
+                <button>Add Tracks</button>
+            </form>
+
+            <label for="addTracksToPlaylist">Create Playlist:</label>
+            <form id="addTracksToPlaylist" name="addTracksToPlaylist" method="post" action="ViewTracksForPlaylist">
+                <input type="hidden" name="userId" value="${userId}">
+                <button>Select Tracks</button>
+            </form>
+
+            <c:if test="${allTracks ne null}">
             <form id="addTrack" name="addTrack" method="post" action="AddTrack">
                 <input type="hidden" name="userId" value="${userId}">
                 <table>
@@ -145,32 +403,67 @@
                             <td>${item.getName()}</td>
                             <td>${item.getDuration()}</td>
                             <td>${item.getPopularity()}</td>
-                            <td>
-                                <div class="checkbox">
-                                    <label><input type="checkbox" name="track" value="${item.getTrackId()}"></label>
-                                </div>
-                            </td>
+                            <td><div class="checkbox">
+                                <label><input type="checkbox" name="track" value="${item.getTrackId()}"></label></div></td>
                         </tr>
                     </c:forEach>
                 </table>
-                <input type="submit" value="Add Selected Tracks"/>
+                <input type="submit" value="Add Selected Tracks" />
             </form>
             <c:if test="${success ne null}">
-                <td>${success}</td>
+            <td>${success}</td>
             </c:if>
             <c:if test="${failure ne null}">
-                <td>${failure}</td>
+            <td>${failure}</td>
             </c:if>
-        </c:if>
+            </c:if>
 
+            <label for="viewPlaylist">View Your Playlists:</label>
+            <form id="viewPlaylist" name="viewPlaylist" method="post" action="ViewPlaylists">
+                <input type="hidden" name="userId" value="${userId}">
+                <button>Select Tracks</button>
+            </form>
 
-        <label for="addTracksToPlaylist">Create Playlist:</label>
-        <form id="addTracksToPlaylist" name="addTracksToPlaylist" method="post" action="ViewTracksForPlaylist">
-            <input type="hidden" name="userId" value="${userId}">
-            <button>Select Tracks</button>
-        </form>
-        <br>
-        <c:if test="${allTracksForPlaylist ne null}">
+            <c:if test="${userPlaylists ne null}">
+            <form id="deletePlaylist" name="deletePlaylist" method="post" action="DeletePlaylist">
+                <input type="hidden" name="userId" value="${userId}">
+                <table>
+                    <tr>
+                        <th>Playlist ID</th>
+                        <th>Playlist Description</th>
+                        <th>Public</th>
+                        <th>Number of Songs</th>
+                    </tr>
+                    <c:forEach items="${userPlaylists}" var="item" varStatus="loop">
+                        <tr>
+                            <td>${item.getPlaylistId()}</td>
+                            <td>${item.getDescription()}</td>
+                            <td>${item.isPublic()}</td>
+                            <td>${numSongs[loop.index]}</td>
+                            <td><div class="checkbox">
+                                <label><input type="checkbox" name="deletePlaylist" value="${item.getPlaylistId()}"></label></div></td>
+                        </tr>
+                    </c:forEach>
+                </table>
+                <input type="hidden" name="userId" value="${userId}">
+                <input type="submit" value="Delete Playlists" />
+            </form>
+            <c:if test="${successDeletePlaylist ne null}">
+            <td>${successDeletePlaylist}</td>
+            </c:if>
+            <c:if test="${failureDeletePlaylist ne null}">
+            <td>${failureDeletePlaylist}</td>
+            </c:if>
+            </c:if>
+
+            <br>
+            <label for="addTracksToPlaylist">Create Playlist:</label>
+            <form id="addTracksToPlaylist" name="addTracksToPlaylist" method="post" action="ViewTracksForPlaylist">
+                <input type="hidden" name="userId" value="${userId}">
+                <button>Select Tracks</button>
+            </form>
+            <br>
+            <c:if test="${allTracksForPlaylist ne null}">
             <form id="addTrack" name="addTrack" method="post" action="CreatePlaylist">
                 <input type="hidden" name="userId" value="${userId}">
                 <table>
@@ -200,44 +493,44 @@
                 <input type="submit" value="Add Selected Tracks" />
             </form>
             <c:if test="${successCreate ne null}">
-                <td>${successCreate}</td>
-                <br>
-                <td>Playlist ID: ${playlistId}</td>
+            <td>${successCreate}</td>
+            <br>
+            <td>Playlist ID: ${playlistId}</td>
             </c:if>
             <c:if test="${failureCreate ne null}">
-                <td>${failureCreate}</td>
+            <td>${failureCreate}</td>
             </c:if>
-        </c:if>
+            </c:if>
 
 
 
 
-        <h3>Search Tracks, Artists, or Playlists</h3>
-        <form id="searchTracks" name="searchTracks" method="post" action="SearchTracks">
-            <label for="track">Title: </label><input type="text" id="track" name="track">
-            <button>Search Tracks</button>
-            <br>
-        </form>
+            <h3>Search Tracks, Artists, or Playlists</h3>
+            <form id="searchTracks" name="searchTracks" method="post" action="SearchTracks">
+                <label for="track">Title: </label><input type="text" id="track" name="track">
+                <button>Search Tracks</button>
+                <br>
+            </form>
 
-        <form id="searchArtists" name="searchArtists" method="post" action="SearchArtists">
-            <label for="artist">Artist: </label><input type="text" id="artist" name="artist"/>
-            <button>Search Artists</button>
-            <br>
-        </form>
+            <form id="searchArtists" name="searchArtists" method="post" action="SearchArtists">
+                <label for="artist">Artist: </label><input type="text" id="artist" name="artist">
+                <button>Search Artists</button><br>
+            </form>
 
-        <form id="searchPlaylists" name="searchPlaylists" method="post" action="SearchPlaylists">
-            <label for="playlist">Playlist Description: </label><input type="text" id="playlist" name="playlist"/>
-            <button>Search Playlists</button>
-        </form>
+            <form id="searchPlaylists" name="searchPlaylists" method="post" action="SearchPlaylists">
+                <input type="hidden" name="userId" value="${userId}">
+                <label for="playlist">Playlist Description: </label><input type="text" id="playlist" name="playlist" />
+                <button>Search Playlists</button>
+            </form>
 
-        <h3>View Tracks By Artist</h3>
-        <form id="searchTracksByArtist" name="searchTracksByArtist" method="post" action="ViewTracksByArtist">
-            <input type="hidden" name="userId" value="${userId}">
-            <label for="artist">Artist: </label><input type="text" id="artistSong" name="artistSong">
-            <button>Search Tracks by Artist</button><br>
-        </form>
+            <h3>View Tracks By Artist</h3>
+            <form id="searchTracksByArtist" name="searchTracksByArtist" method="post" action="ViewTracksByArtist">
+                <input type="hidden" name="userId" value="${userId}">
+                <label for="artist">Artist: </label><input type="text" id="artistSong" name="artistSong">
+                <button>Search Tracks by Artist</button><br>
+            </form>
 
-        <c:if test="${artistTracks ne null}">
+            <c:if test="${artistTracks ne null}">
             <table>
                 <tr>
                     <th>TrackId</th>
@@ -258,9 +551,22 @@
                     </tr>
                 </c:forEach>
             </table>
-        </c:if>
+            </c:if>
 
     </div>
+
+    <script src="${pageContext.request.contextPath}/frontend/assets/select2/select2.min.js"></script>
+    <script src="${pageContext.request.contextPath}/frontend/assets/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script>
+        $('.js-pscroll').each(function(){
+            var ps = new PerfectScrollbar(this);
+
+            $(window).on('resize', function(){
+                ps.update();
+            })
+        });
+    </script>
+    <script src="${pageContext.request.contextPath}/frontend/assets/javascript/table.js"></script>
 
 </div>
 </body>

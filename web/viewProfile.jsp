@@ -377,46 +377,46 @@
                 <button>Add Tracks</button>
             </form>
 
+            <c:if test="${allTracks ne null}">
+                <form id="addTrack" name="addTrack" method="post" action="AddTrack">
+                <input type="hidden" name="userId" value="${userId}">
+                <table>
+                <tr>
+                <th>TrackId</th>
+                <th>AnalyticsId</th>
+                <th>AlbumId</th>
+                <th>Name</th>
+                <th>Duration</th>
+                <th>Popularity</th>
+                </tr>
+                <c:forEach items="${allTracks}" var="item" varStatus="status">
+                    <tr>
+                        <td>${item.getTrackId()}</td>
+                        <td>${item.getAnalyticsId()}</td>
+                        <td>${item.getAlbumId()}</td>
+                        <td>${item.getName()}</td>
+                        <td>${item.getDuration()}</td>
+                        <td>${item.getPopularity()}</td>
+                        <td><div class="checkbox">
+                            <label><input type="checkbox" name="track" value="${item.getTrackId()}"></label></div></td>
+                    </tr>
+                </c:forEach>
+                </table>
+                <input type="submit" value="Add Selected Tracks" />
+                </form>
+                <c:if test="${success ne null}">
+                    <td>${success}</td>
+                </c:if>
+                <c:if test="${failure ne null}">
+                    <td>${failure}</td>
+                </c:if>
+
             <label for="addTracksToPlaylist">Create Playlist:</label>
             <form id="addTracksToPlaylist" name="addTracksToPlaylist" method="post" action="ViewTracksForPlaylist">
                 <input type="hidden" name="userId" value="${userId}">
                 <button>Select Tracks</button>
             </form>
 
-            <c:if test="${allTracks ne null}">
-            <form id="addTrack" name="addTrack" method="post" action="AddTrack">
-                <input type="hidden" name="userId" value="${userId}">
-                <table>
-                    <tr>
-                        <th>TrackId</th>
-                        <th>AnalyticsId</th>
-                        <th>AlbumId</th>
-                        <th>Name</th>
-                        <th>Duration</th>
-                        <th>Popularity</th>
-                    </tr>
-                    <c:forEach items="${allTracks}" var="item" varStatus="status">
-                        <tr>
-                            <td>${item.getTrackId()}</td>
-                            <td>${item.getAnalyticsId()}</td>
-                            <td>${item.getAlbumId()}</td>
-                            <td>${item.getName()}</td>
-                            <td>${item.getDuration()}</td>
-                            <td>${item.getPopularity()}</td>
-                            <td><div class="checkbox">
-                                <label><input type="checkbox" name="track" value="${item.getTrackId()}"></label></div></td>
-                        </tr>
-                    </c:forEach>
-                </table>
-                <input type="submit" value="Add Selected Tracks" />
-            </form>
-            <c:if test="${success ne null}">
-            <td>${success}</td>
-            </c:if>
-            <c:if test="${failure ne null}">
-            <td>${failure}</td>
-            </c:if>
-            </c:if>
 
             <label for="viewPlaylist">View Your Playlists:</label>
             <form id="viewPlaylist" name="viewPlaylist" method="post" action="ViewPlaylists">
@@ -499,7 +499,6 @@
             </c:if>
             <c:if test="${failureCreate ne null}">
             <td>${failureCreate}</td>
-            </c:if>
             </c:if>
 
 

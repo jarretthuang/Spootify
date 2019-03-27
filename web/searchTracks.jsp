@@ -33,13 +33,41 @@
     </c:forEach>
 </table>
 
-<h3>Filter Tracks</h3>
-<form id="filterTracks" name="filterTracks" method="post" action="FilterTracks">
-    <label for="track">Filter by Title: </label><input type="text" id="track" name="track" />
-    <label for="track">Filter by Artist: </label><input type="text" id="artist" name="artist" />
-    <label for="track">Filter by Album: </label><input type="text" id="album" name="album" />
-    <button>Filter</button><br>
+<label for="divisor">Choose tracks that: </label>
+<form action="DivisionExample" method="post">
+    <select name = "divisor" id="divisor">
+        <option value = "playlist">are in every playlist</option>
+        <option value = "user">are stored by every user</option>
+        <option value = "artist">are created by every artist</option>
+    </select>
+    <input type="hidden" name="userId" value="${userId}" />
+    <input type="submit" name="btnsbmt" id="btnsbmt" />
+</form>
+
+<label for="field">Sort tracks by: </label>
+<form action="SortTracks" method="post">
+    <select name = "field" id="field">
+        <option value = "liveliness">liveliness</option>
+        <option value = "speechiness">speechiness</option>
+        <option value = "danceability">danceability</option>
+        <option value = "instrumentalness">instrumentalness</option>
+        <option value = "energy">energy</option>
+        <option value = "analyticsKey">key</option>
+        <option value = "loudness">loudness</option>
+        <option value = "tempo">tempo</option>
+    </select>
+
+    <label for="order">in </label>
+    <select name = "order" id="order">
+        <option value = "ASC">ascending order</option>
+        <option value = "DESC">descending order</option>
+    </select>
+
+    <input type="hidden" name="userId" value="${userId}" />
+    <input type="submit" name="btn" id="btn" />
 </form>
 
 </body>
 </html>
+
+

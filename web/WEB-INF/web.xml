@@ -215,4 +215,14 @@
         <url-pattern>/DivisionExample</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>SortTracks</servlet-name>
+        <servlet-class>servlets.SortTracks</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SortTracks</servlet-name>
+        <url-pattern>/SortTracks</url-pattern>
+    </servlet-mapping>
+
 </web-app>

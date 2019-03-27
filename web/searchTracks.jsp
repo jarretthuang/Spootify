@@ -44,5 +44,30 @@
     <input type="submit" name="btnsbmt" id="btnsbmt" />
 </form>
 
+<label for="field">Sort tracks by: </label>
+<form action="SortTracks" method="post">
+    <select name = "field" id="field">
+        <option value = "liveliness">liveliness</option>
+        <option value = "speechiness">speechiness</option>
+        <option value = "danceability">danceability</option>
+        <option value = "instrumentalness">instrumentalness</option>
+        <option value = "energy">energy</option>
+        <option value = "analyticsKey">key</option>
+        <option value = "loudness">loudness</option>
+        <option value = "tempo">tempo</option>
+    </select>
+
+    <label for="order">in </label>
+    <select name = "order" id="order">
+        <option value = "ASC">ascending order</option>
+        <option value = "DESC">descending order</option>
+    </select>
+
+    <input type="hidden" name="userId" value="${userId}" />
+    <input type="submit" name="btn" id="btn" />
+</form>
+
 </body>
 </html>
+
+

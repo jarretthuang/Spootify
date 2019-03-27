@@ -96,6 +96,8 @@
     </form>
     <br>
     <c:if test="${tracks ne null}">
+    <form id="viewTrack" name="viewTrack" method="post" action="DeleteTrack">
+        <input type="hidden" name="userId" value="${userId}">
         <table>
             <tr>
                 <th>TrackId</th>
@@ -113,6 +115,8 @@
                     <td>${item.getName()}</td>
                     <td>${item.getDuration()}</td>
                     <td>${item.getPopularity()}</td>
+                    <td><div class="checkbox">
+                        <label><input type="checkbox" name="track" value="${item.getTrackId()}"></label></div></td>
                 </tr>
             </c:forEach>
         </table>

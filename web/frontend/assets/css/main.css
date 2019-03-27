@@ -215,7 +215,7 @@ body {
     padding: 0 40px 0 10px;
     width: 250px;
     height: 40px;
-    border: 1px solid #FFFFFF;
+    border: 1px solid #FFFFFF !important;
     border-radius: 0.4em;
     background: none;
     color: #fff;
@@ -235,6 +235,10 @@ body {
     margin: 0em;
     font: 400 13.3333px "Open Sans";
     grid-column: 2/3;
+}
+
+.form-input:focus {
+    border: 1px solid #FFFFFF !important;
 }
 
 .form-title {
@@ -388,11 +392,12 @@ input[type=number]::-webkit-outer-spin-button {
 
 .ui-panel {
     grid-column: 1/4;
-    grid-row: 2/4;
+    grid-row: 1/4;
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
     display: grid;
     grid-template-columns: 1fr 5fr 1fr;
+    grid-template-rows: 200px 1fr;
 }
 
 .spootify-nametag {
@@ -439,10 +444,12 @@ input[type=number]::-webkit-outer-spin-button {
     width: 100px;
     cursor: pointer;
     grid-row: 1/2;
+    align-self: end!important;
 }
 
 .song-browser {
     grid-column: 2/3;
+    filter: invert(100%);
 }
 
 .user-settings {
@@ -487,4 +494,8 @@ input[type=number]::-webkit-outer-spin-button {
 
 .guest-container .small-form {
     grid-template-columns: 1fr 120px 10px;
+}
+
+.table100-head th {
+    text-align: initial !important;
 }

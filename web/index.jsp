@@ -33,9 +33,9 @@
   <div id="login-button" class="minimal-button">LOG IN</div>
 </div>
 <span id="copy-right" class="noselect">© 2019 BARELY LEGAL. ALL RIGHTS RESERVED.</span>
-<div id="login-form">
+<div class="minimal-form popup-form">
   <form action="viewProfile.jsp" method="POST" class="da-form">
-    <span id="form-title">Your Spootify</span>
+    <span class="form-title">Your Spootify</span>
     <input id="userID" class="form-input" name="userID" type="text" placeholder="Your User ID" required>
     <div class="submit-button-wrapper">
       <button type="submit" class="submit-button"><div class="submit-text">Sign Me In</div><img class="check-submit" src="${pageContext.request.contextPath}/frontend/assets/img/whiteCheck.png"></button>

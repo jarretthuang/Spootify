@@ -149,9 +149,9 @@ body {
     align-self: center;
 }
 
-#login-form {
+.minimal-form {
     display: none;
-    background-color: black;
+    background-color: black!important;
     border: 1px white solid;
 }
 
@@ -237,7 +237,7 @@ body {
     grid-column: 2/3;
 }
 
-#form-title {
+.form-title {
     color: white;
     font-family: 'Open Sans', sans-serif;
     align-self: center;
@@ -387,8 +387,12 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .ui-panel {
-    grid-column: 2/3;
-    grid-row: 2/3
+    grid-column: 1/4;
+    grid-row: 2/4;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
 }
 
 .spootify-nametag {
@@ -418,4 +422,69 @@ input[type=number]::-webkit-outer-spin-button {
 
 .redirect-to-profile-button:hover {
     background-color: white;
+}
+
+.welcome-back {
+    grid-column: 2/3;
+    font-size: 30px;
+    align-self: center;
+    grid-row: 1/2;
+}
+
+.profile-pic {
+    grid-column: 3/4;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    width: 100px;
+    cursor: pointer;
+    grid-row: 1/2;
+}
+
+.song-browser {
+    grid-column: 2/3;
+}
+
+.user-settings {
+    grid-column: 3/4;
+    grid-row: 2/3;
+}
+
+.small-form {
+    display: grid;
+    grid-template-columns: 1fr min-content 10px;
+    grid-template-rows: 1fr 1fr;
+    grid-column-gap: 30px;
+}
+
+.small-form .form-sub-title {
+    grid-column: 1/3;
+}
+
+.small-form .form-input {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    justify-self: end;
+}
+
+.small-form .minimal-button {
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+
+.simple-button {
+    background: black;
+}
+
+.simple-button:hover {
+    background-color: white;
+}
+
+.title-padding {
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.guest-container .small-form {
+    grid-template-columns: 1fr 120px 10px;
 }

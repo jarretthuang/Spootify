@@ -33,5 +33,13 @@
     </c:forEach>
 </table>
 
+<h3>Filter Tracks</h3>
+<form id="filterTracks" name="filterTracks" method="post" action="FilterTracks">
+    <label for="track">Filter by Title: </label><input type="text" id="track" name="track" />
+    <label for="track">Filter by Artist: </label><input type="text" id="artist" name="artist" />
+    <label for="track">Filter by Album: </label><input type="text" id="album" name="album" />
+    <button>Filter</button><br>
+</form>
+
 </body>
 </html>

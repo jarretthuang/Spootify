@@ -156,9 +156,9 @@
     </servlet-mapping>
       
     <servlet>
-    <servlet-name>ViewTracksByArtist</servlet-name>
-    <servlet-class>servlets.ViewTracksByArtist</servlet-class>
-</servlet>
+        <servlet-name>ViewTracksByArtist</servlet-name>
+        <servlet-class>servlets.ViewTracksByArtist</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>ViewTracksByArtist</servlet-name>
@@ -203,6 +203,16 @@
     <servlet-mapping>
         <servlet-name>ViewPlaylists</servlet-name>
         <url-pattern>/ViewPlaylists</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DivisionExample</servlet-name>
+        <servlet-class>servlets.DivisionExample</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DivisionExample</servlet-name>
+        <url-pattern>/DivisionExample</url-pattern>
     </servlet-mapping>
 
 </web-app>

@@ -116,7 +116,7 @@
 
     <servlet>
 
-        <servlet-name>AddTrack</servlet-name>
+    <servlet-name>AddTrack</servlet-name>
         <servlet-class>servlets.AddTrack</servlet-class>
     </servlet>
 
@@ -156,13 +156,23 @@
     </servlet-mapping>
       
     <servlet>
-        <servlet-name>ViewTracksByArtist</servlet-name>
-        <servlet-class>servlets.ViewTracksByArtist</servlet-class>
-    </servlet>
+    <servlet-name>ViewTracksByArtist</servlet-name>
+    <servlet-class>servlets.ViewTracksByArtist</servlet-class>
+</servlet>
 
     <servlet-mapping>
         <servlet-name>ViewTracksByArtist</servlet-name>
         <url-pattern>/ViewTracksByArtist</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteTrack</servlet-name>
+        <servlet-class>servlets.DeleteTrack</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DeleteTrack</servlet-name>
+        <url-pattern>/DeleteTrack</url-pattern>
     </servlet-mapping>
 
 </web-app>

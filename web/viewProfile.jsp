@@ -96,7 +96,7 @@
     </form>
     <br>
     <c:if test="${tracks ne null}">
-    <form id="viewTrack" name="viewTrack" method="post" action="DeleteTrack">
+    <form id="deleteTrack" name="deleteTrack" method="post" action="DeleteTrack">
         <input type="hidden" name="userId" value="${userId}">
         <table>
             <tr>
@@ -120,8 +120,17 @@
                 </tr>
             </c:forEach>
         </table>
+        <input type="submit" value="Delete Tracks" />
+        <br>
+        <c:if test="${successDelete ne null}">
+            <td>${successDelete}</td>
+        </c:if>
+        <c:if test="${failureDelete ne null}">
+            <td>${failureDelete}</td>
+        </c:if>
     </c:if>
 
+    <br>
     <label for="addTracks">Add Tracks:</label>
     <form id="addTracks" name="addTracks" method="post" action="ViewAllTracks">
         <input type="hidden" name="userId" value="${userId}">

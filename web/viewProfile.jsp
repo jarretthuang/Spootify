@@ -177,6 +177,45 @@
             <td>${failure}</td>
         </c:if>
     </c:if>
+
+    <label for="viewPlaylist">View Your Playlist:</label>
+    <form id="viewPlaylist" name="viewPlaylist" method="post" action="ViewPlaylists">
+        <input type="hidden" name="userId" value="${userId}">
+        <button>Select Tracks</button>
+    </form>
+
+    <c:if test="${userPlaylists ne null}">
+        <form id="deletePlaylist" name="deletePlaylist" method="post" action="DeletePlaylist">
+            <input type="hidden" name="userId" value="${userId}">
+            <table>
+                <tr>
+                    <th>Playlist ID</th>
+                    <th>Playlist Description</th>
+                    <th>Public</th>
+                    <th>Number of Songs</th>
+                </tr>
+                <c:forEach items="${userPlaylists}" var="item" varStatus="loop">
+                    <tr>
+                        <td>${item.getPlaylistId()}</td>
+                        <td>${item.getDescription()}</td>
+                        <td>${item.isPublic()}</td>
+                        <td>${numSongs[loop.index]}</td>
+                        <td><div class="checkbox">
+                            <label><input type="checkbox" name="deletePlaylist" value="${item.getPlaylistId()}"></label></div></td>
+                    </tr>
+                </c:forEach>
+            </table>
+            <input type="hidden" name="userId" value="${userId}">
+            <input type="submit" value="Delete Playlists" />
+        </form>
+        <c:if test="${successDeletePlaylist ne null}">
+        <td>${successDeletePlaylist}</td>
+        </c:if>
+        <c:if test="${failureDeletePlaylist ne null}">
+        <td>${failureDeletePlaylist}</td>
+        </c:if>
+    </c:if>
+
     <br>
     <label for="addTracksToPlaylist">Create Playlist:</label>
     <form id="addTracksToPlaylist" name="addTracksToPlaylist" method="post" action="ViewTracksForPlaylist">
@@ -223,7 +262,6 @@
         </c:if>
     </c:if>
 
-    <br>
     <h3>Search Tracks, Artists, or Playlists</h3>
     <form id="searchTracks" name="searchTracks" method="post" action="SearchTracks">
         <label for="track">Title: </label><input type="text" id="track" name="track">
@@ -236,6 +274,7 @@
     </form>
 
     <form id="searchPlaylists" name="searchPlaylists" method="post" action="SearchPlaylists">
+        <input type="hidden" name="userId" value="${userId}">
         <label for="playlist">Playlist Description: </label><input type="text" id="playlist" name="playlist" />
         <button>Search Playlists</button>
     </form>

@@ -59,6 +59,7 @@ public class CreatePlaylist extends HttpServlet {
 
             request.getSession().setAttribute("successCreate", "Created new playlist!");
             request.getSession().setAttribute("playlistId", playlistId);
+            request.getSession().setAttribute("userId", userId);
             request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
 
         } catch (SQLException e) {

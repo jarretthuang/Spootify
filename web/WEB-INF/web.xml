@@ -175,4 +175,34 @@
         <url-pattern>/DeleteTrack</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>FollowPlaylist</servlet-name>
+        <servlet-class>servlets.FollowPlaylist</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>FollowPlaylist</servlet-name>
+        <url-pattern>/FollowPlaylist</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeletePlaylist</servlet-name>
+        <servlet-class>servlets.DeletePlaylist</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DeletePlaylist</servlet-name>
+        <url-pattern>/DeletePlaylist</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ViewPlaylists</servlet-name>
+        <servlet-class>servlets.ViewPlaylists</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ViewPlaylists</servlet-name>
+        <url-pattern>/ViewPlaylists</url-pattern>
+    </servlet-mapping>
+
 </web-app>

@@ -4,8 +4,6 @@ class TrackObj {
 
     private Album album;
 
-    private List<Artist> artists;
-
     private int duration_ms;
 
     private boolean explicit;

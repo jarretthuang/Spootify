@@ -5,8 +5,6 @@ public class Album {
 
     private String albumType;
 
-    private List<Artist> artists;
-
     private String href;
 
     private List<String> genres;

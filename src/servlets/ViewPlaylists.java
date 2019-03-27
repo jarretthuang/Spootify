@@ -27,7 +27,7 @@ public class ViewPlaylists extends HttpServlet {
         String getPlaylistsFromUserView = "CREATE OR REPLACE VIEW playlists_user_follows AS " +
                 "SELECT Playlist.playlistId, Playlist.description, Playlist.isPublic, FollowsPlaylist.userId " +
                 "FROM Playlist, FollowsPlaylist " +
-                "WHERE Playlist.playlistId = FollowsPlaylist.playlistId";
+                "WHERE Playlist.playlistId = FollowsPlaylist.playlistId AND Playlist.isPublic = \'Y\'";
 
         String getSongs = "SELECT playlists_user_follows.playlistId, playlists_user_follows.description, " +
                 "playlists_user_follows.isPublic, COUNT(*) AS NumSongs "+

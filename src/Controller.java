@@ -8,8 +8,6 @@ public class Controller {
     private Map<Integer, TrackObj> trackDict;
     private Map<Integer, Album> albumDict;
     private Map<Integer, PlayList> playlistDict;
-    private Map<Integer, Artist> artistDict;
-
 
 
     public User getUserFromDB(int userId) {
@@ -42,11 +40,6 @@ public class Controller {
     public PlayList getPlaylistFromDB(int playlistId) {
 
         return new PlayList();
-    }
-
-    public Artist getArtistFromDB(int artistID) {
-
-        return new Artist();
     }
 
     public Analytics getAnalyticsFromTrack(TrackObj track) {

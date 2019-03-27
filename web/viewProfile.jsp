@@ -178,7 +178,7 @@
         </c:if>
     </c:if>
 
-    <label for="viewPlaylist">View Your Playlist:</label>
+    <label for="viewPlaylist">View Your Playlists:</label>
     <form id="viewPlaylist" name="viewPlaylist" method="post" action="ViewPlaylists">
         <input type="hidden" name="userId" value="${userId}">
         <button>Select Tracks</button>

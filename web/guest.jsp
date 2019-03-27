@@ -54,8 +54,6 @@
         </div>
         <button class="minimal-button simple-button" type="submit" name="balance">Check Balance</button>
     </form>
-
-<div>Testing</div>
     <form action="UpdateBalance" method="post" class="small-form">
         <span class="form-sub-title">Update your balance</span>
         <input class="form-input" type="number" id="newBalance" name="newBalance" placeholder="Digits Only">

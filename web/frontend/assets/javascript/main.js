@@ -15,6 +15,7 @@ function randomizeTheme() {
         let body = $("body");
         body.css("background-color", "white");
         body.css("filter", "invert(100%)");
+        $(".do-not-invert").css("filter", "invert(100%)");
         isDarkMode = false;
     }
 }
@@ -23,7 +24,7 @@ function init() {
     $("#login-button").click(function() {
         $(".submit-text").show();
         $(".check-submit").hide();
-        $("#login-form").modal({
+        $(".popup-form").modal({
             fadeDuration: 100
         });
     });
@@ -73,7 +74,7 @@ function jsonParser(name) {
 }
 
 function isEmpty(obj) {
-    for(var key in obj) {
+    for(let key in obj) {
         if(obj.hasOwnProperty(key))
             return false;
     }

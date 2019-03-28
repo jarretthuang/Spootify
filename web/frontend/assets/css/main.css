@@ -524,3 +524,8 @@ input[type=number]::-webkit-outer-spin-button {
     align-self: center;
     display: none;
 }
+
+.create-playlist-form {
+    display: inherit!important;
+    filter: invert(100%)!important;
+}

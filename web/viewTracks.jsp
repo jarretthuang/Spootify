@@ -143,7 +143,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="minimal-form">
+                <div class="minimal-form create-playlist-form">
                     <input class="simple-button minimal-button do-not-invert" type="text" name="description" placeholder="Playlist Description" required>
                     <input type="hidden" name="userId" value="${userId}">
                     <button type="submit" class="simple-button minimal-button do-not-invert" value="">Create Playlist</button>

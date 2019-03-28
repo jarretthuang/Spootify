@@ -52,16 +52,21 @@
     </div>
     <img class="search-icon"
          src="${pageContext.request.contextPath}/frontend/assets/img/search-icon-white.png">
-    <div class="search-menu small-form">
+    <div class="search-menu minimal-form">
+        <span class="form-title">Search</span>
         <form class="small-form" id="searchTracks" name="searchTracks" method="post" action="SearchTracks">
             <input class="form-input" type="text" id="track" name="track" required placeholder="Song Title">
             <button type="submit" class="minimal-button simple-button">Search Song</button>
         </form>
         <form class="small-form" id="searchArtists" name="searchArtists" method="post" action="SearchArtists">
             <input class="form-input" type="text" id="artist" name="artist" required placeholder="Artist Name">
-            <button type="submit" class="minimal-button simple-button">Search Artists</button>
+            <button type="submit" class="minimal-button simple-button">Search Artist</button>
         </form>
-
+        <form class="small-form" id="searchPlaylists" name="searchPlaylists" method="post" action="SearchPlaylists">
+            <input class="form-input" type="text" id="playlist" name="playlist" required placeholder="Playlist Description">
+            <button type="submit" class="minimal-button simple-button">Search Playlist</button>
+        </form>
+        <span class="title-padding"></span>
     </div>
     <img class="profile-pic do-not-invert" id="login-button"
          src="https://img1.ak.crunchyroll.com/i/spire3/3614810e9ada5235038e8deb4adc264c1447729591_large.jpg">
@@ -249,18 +254,5 @@
 
 </div>
 
-
-
-
-
-<div style="display: none;">
-
-
-    <form id="searchPlaylists" name="searchPlaylists" method="post" action="SearchPlaylists">
-        <input type="hidden" name="userId" value="${userId}">
-        <label for="playlist">Playlist Description: </label><input type="text" id="playlist" name="playlist" />
-        <button>Search Playlists</button>
-    </form>
-</div>
 </body>
 </html>

@@ -29,6 +29,12 @@ function init() {
         });
     });
 
+    $(".search-icon").click(function () {
+        $(".search-menu").modal({
+            fadeDuration: 100
+        });
+    });
+
     let pageType = $(".spootify-breadcrumb").text();
 
     if (pageType === "> My Library > Playlists") {

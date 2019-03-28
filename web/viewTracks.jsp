@@ -56,15 +56,15 @@
         <span class="form-title">Search</span>
         <form class="small-form" id="searchTracks" name="searchTracks" method="post" action="SearchTracks">
             <input class="form-input" type="text" id="track" name="track" required placeholder="Song Title">
-            <button type="submit" class="minimal-button simple-button">Search Song</button>
+            <button type="submit" class="minimal-button simple-button">Search Songs</button>
         </form>
         <form class="small-form" id="searchArtists" name="searchArtists" method="post" action="SearchArtists">
             <input class="form-input" type="text" id="artist" name="artist" required placeholder="Artist Name">
-            <button type="submit" class="minimal-button simple-button">Search Artist</button>
+            <button type="submit" class="minimal-button simple-button">Search Artists</button>
         </form>
         <form class="small-form" id="searchPlaylists" name="searchPlaylists" method="post" action="SearchPlaylists">
             <input class="form-input" type="text" id="playlist" name="playlist" required placeholder="Playlist Description">
-            <button type="submit" class="minimal-button simple-button">Search Playlist</button>
+            <button type="submit" class="minimal-button simple-button">Search Playlists</button>
         </form>
         <span class="title-padding"></span>
     </div>

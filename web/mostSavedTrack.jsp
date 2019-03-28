@@ -102,7 +102,6 @@
                                 <th class="cell100 column4">Name</th>
                                 <th class="cell100 column5">Duration</th>
                                 <th class="cell100 column6">Popularity</th>
-                                <th class="cell100 column7">(Select)</th>
                             </tr>
                             </thead>
                         </table>
@@ -119,8 +118,6 @@
                                         <td class="cell100 column4">${item.getName()}</td>
                                         <td class="cell100 column5">${item.getDuration()}</td>
                                         <td class="cell100 column6">${item.getPopularity()}</td>
-                                        <td class="cell100 column7"><div class="checkbox">
-                                            <label><input type="checkbox" name="track" value="${item.getTrackId()}"></label></div></td>
                                     </tr>
                                 </c:forEach>
                             </c:if>

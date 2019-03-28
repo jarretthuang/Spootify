@@ -225,4 +225,15 @@
         <url-pattern>/SortTracks</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>MostSavedTrack</servlet-name>
+        <servlet-class>servlets.MostSavedTrack</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>MostSavedTrack</servlet-name>
+        <url-pattern>/MostSavedTrack</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>

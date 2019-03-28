@@ -38,7 +38,7 @@
         request.getSession().setAttribute("userId", request.getParameter("userID"));
     }
 
-    if (request.getParameter("profilePic") == null) {
+    if (request.getParameter("profilePic") == null && session.getAttribute("profilePic") == null) {
         request.getSession().setAttribute("profilePic", "https://www.georeferencer.com/static/img/person.png");
     }
 %>
@@ -59,14 +59,20 @@
     <div class="search-menu minimal-form">
         <span class="form-title">Search</span>
         <form class="small-form" id="searchTracks" name="searchTracks" method="post" action="SearchTracks">
+            <input type="hidden" name="profilePic" value="${profilePic}"/>
+            <input type="hidden" name="userId" value="${userId}">
             <input class="form-input" type="text" id="track" name="track" required placeholder="Song Title">
             <button type="submit" class="minimal-button simple-button">Search Songs</button>
         </form>
         <form class="small-form" id="searchArtists" name="searchArtists" method="post" action="SearchArtists">
+            <input type="hidden" name="profilePic" value="${profilePic}"/>
+            <input type="hidden" name="userId" value="${userId}">
             <input class="form-input" type="text" id="artist" name="artist" required placeholder="Artist Name">
             <button type="submit" class="minimal-button simple-button">Search Artists</button>
         </form>
         <form class="small-form" id="searchPlaylists" name="searchPlaylists" method="post" action="SearchPlaylists">
+            <input type="hidden" name="profilePic" value="${profilePic}"/>
+            <input type="hidden" name="userId" value="${userId}">
             <input class="form-input" type="text" id="playlist" name="playlist" required placeholder="Playlist Description">
             <button type="submit" class="minimal-button simple-button">Search Playlists</button>
         </form>

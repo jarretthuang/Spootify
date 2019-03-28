@@ -210,7 +210,7 @@
             <button type="submit" class="simple-button minimal-button do-not-invert switch-to-playlists">Show Playlists</button>
         </form>
         <button class="simple-button minimal-button do-not-invert switch-to-tracks">Show Tracks</button>
-        <form id="viewTracks" name="viewTracks" method="post" action="ViewTracks">
+        <form id="viewAllTracks" name="viewAllTracks" method="post" action="ViewAllTracks">
             <input type="hidden" name="userId" value="${userId}">
             <button type="submit" class="simple-button minimal-button do-not-invert">Browse</button>
         </form>

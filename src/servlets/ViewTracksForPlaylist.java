@@ -45,7 +45,7 @@ public class ViewTracksForPlaylist extends HttpServlet {
 
                 request.getSession().setAttribute("allTracksToAddToPlaylist", tracks);
                 request.getSession().setAttribute("userId", userId);
-                request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
+                request.getRequestDispatcher("/viewTracks.jsp").forward(request, response);
             }
 
 

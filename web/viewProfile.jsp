@@ -353,7 +353,6 @@
             <button>Add Tracks</button>
         </form>
 
-
         <c:if test="${allTracks ne null}">
             <form id="addTrack" name="addTrack" method="post" action="AddTrack">
             <input type="hidden" name="userId" value="${userId}">
@@ -389,11 +388,6 @@
         </c:if>
         </c:if>
 
-        <label for="addTracksToPlaylist">Create Playlist:</label>
-        <form id="addTracksToPlaylist" name="addTracksToPlaylist" method="post" action="ViewTracksForPlaylist">
-            <input type="hidden" name="userId" value="${userId}">
-            <button>Select Tracks</button>
-        </form>
 
             <label for="viewPlaylist">View Your Playlists:</label>
             <form id="viewPlaylist" name="viewPlaylist" method="post" action="ViewPlaylists">

@@ -22,6 +22,7 @@ public class ViewTracksForPlaylist extends HttpServlet {
         ResultSet rs;
         ArrayList<TrackObj> tracks = new ArrayList<>();
         int userId = Integer.parseInt(request.getParameter("userId").trim());
+        String profilePic = request.getParameter("profilePic");
         String getAllSongs = "SELECT * FROM Track";
 
         try {
@@ -45,7 +46,8 @@ public class ViewTracksForPlaylist extends HttpServlet {
 
                 request.getSession().setAttribute("allTracksToAddToPlaylist", tracks);
                 request.getSession().setAttribute("userId", userId);
-                request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
+                request.getSession().setAttribute("profilePic", profilePic);
+                request.getRequestDispatcher("/viewTracks.jsp").forward(request, response);
             }
 
 

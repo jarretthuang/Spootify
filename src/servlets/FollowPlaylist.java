@@ -20,7 +20,7 @@ public class FollowPlaylist extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String[] selectedPlaylists = request.getParameterValues("followPlaylist");
         int userId = Integer.parseInt(request.getParameter("userId"));
-
+        String profilePic = request.getParameter("profilePic");
         if (selectedPlaylists == null) {
             request.getSession().setAttribute("failureFollow", "No playlists selected");
             request.getRequestDispatcher("/searchPlaylists.jsp").forward(request, response);
@@ -49,6 +49,7 @@ public class FollowPlaylist extends HttpServlet {
 
             request.getSession().setAttribute("successFollow", "You're now following the selected playlists!");
             request.getSession().setAttribute("userId", userId);
+            request.getSession().setAttribute("profilePic", profilePic);
             request.getRequestDispatcher("/searchPlaylists.jsp").forward(request, response);
 
         } catch (SQLException e) {

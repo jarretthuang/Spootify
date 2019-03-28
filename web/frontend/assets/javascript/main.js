@@ -29,21 +29,48 @@ function init() {
         });
     });
 
-    $(".switch-to-playlists").click(function () {
-        $(".tracks-view-container").hide();
-        $(".switch-to-playlists").hide();
-        $(".playlists-view-container").show();
-        $(".switch-to-tracks").show();
-        $(".spootify-breadcrumb").text("> My Library > Playlists");
+    $(".search-icon").click(function () {
+        $(".search-menu").modal({
+            fadeDuration: 100
+        });
     });
 
-    $(".switch-to-tracks").click(function () {
+    let pageType = $(".spootify-breadcrumb").text();
+
+    if (pageType === "> My Library > Playlists") {
+        $(".tracks-view-container").hide();
+        $(".switch-to-playlists").hide();
+    } else if (pageType === "> My Library > Tracks") {
         $(".playlists-view-container").hide();
         $(".switch-to-tracks").hide();
-        $(".tracks-view-container").show();
-        $(".switch-to-playlists").show();
-        $(".spootify-breadcrumb").text("> My Library > Tracks");
+    } else if (pageType === "> Browse > Add Tracks to Your Library") {
+        $(".playlists-view-container").hide();
+        $(".switch-to-tracks").hide();
+    } else if (pageType === "> Browse > Create Playlist") {
+        $(".tracks-view-container").hide();
+        $(".switch-to-playlists").hide();
+    }
+
+    $(".switch-to-tracks").click(function () {
+       $(".playlists-view-container").hide();
+       $(".tracks-view-container").show();
+       $(".switch-to-tracks").hide();
+       $(".switch-to-playlists").show();
+       $(".spootify-breadcrumb").hide();
+       $(".spootify-breadcrumb-static").show();
     });
+
+    function animateSpootify() {
+        let text = $(".text");
+        if (text.hasClass("hidden")) {
+            text.removeClass("hidden");
+        } else {
+            text.addClass("hidden");
+        }
+        window.setTimeout(animateSpootify, 2000);
+    }
+
+    animateSpootify();
 }
 
 function sendQuery(query) {

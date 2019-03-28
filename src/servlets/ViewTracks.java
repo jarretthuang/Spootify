@@ -20,6 +20,7 @@ public class ViewTracks extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Connection connection = null;
         int userId = Integer.parseInt(request.getParameter("userId").trim());
+        String profilePic = request.getParameter("profilePic");
         ResultSet rs;
         ArrayList<TrackObj> tracks = new ArrayList<>();
 
@@ -50,6 +51,7 @@ public class ViewTracks extends HttpServlet {
 
                 request.getSession().setAttribute("tracksStoredByUser", tracks);
                 request.getSession().setAttribute("userId", userId);
+                request.getSession().setAttribute("profilePic", profilePic);
                 request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
             }
 

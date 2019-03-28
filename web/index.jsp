@@ -27,14 +27,24 @@
 <div class="hoja" id="logo-homepage">
   <img id="music-note" src="${pageContext.request.contextPath}/frontend/assets/img/whiteMusicNote.png">
 </div>
-<div id="spootify-name">Spootify</div>
+<div id="spootify-name">
+  <ul class="text hidden">
+    <li>S</li>
+    <li class="ghost">p</li>
+    <li class="ghost">o</li>
+    <li class="ghost">o</li>
+    <li class="ghost">t</li>
+    <li class="ghost">i</li>
+    <li class="ghost">f</li>
+    <li class="ghost">y</li>
+  </ul></div>
 <div id="home-buttons">
   <a href='register.jsp' id="register-button" ><div class="minimal-button">SIGN UP</div></a>
   <div id="login-button" class="minimal-button">LOG IN</div>
 </div>
 <span id="copy-right" class="noselect">© 2019 BARELY LEGAL. ALL RIGHTS RESERVED.</span>
 <div class="minimal-form popup-form">
-  <form action="ViewTracks" method="POST" class="da-form">
+  <form action="FetchProfile" method="POST" class="da-form">
     <span class="form-title">Your Spootify</span>
     <input id="userId" class="form-input" name="userId" type="text" placeholder="Your User ID" required>
     <div class="submit-button-wrapper">

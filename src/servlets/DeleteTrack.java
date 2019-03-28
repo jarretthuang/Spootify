@@ -21,6 +21,7 @@ public class DeleteTrack extends HttpServlet {
 
         String[] selectedTracks = request.getParameterValues("track");
         int userId = Integer.parseInt(request.getParameter("userId").trim());
+        String imgURL = request.getParameter("profilePic");
 
         if (selectedTracks == null) {
             request.getSession().setAttribute("failureDelete", "No tracks selected");
@@ -52,6 +53,7 @@ public class DeleteTrack extends HttpServlet {
 
             request.getSession().setAttribute("successDelete", "Deleted all selected tracks!");
             request.getSession().setAttribute("userId", userId);
+            request.getSession().setAttribute("profilePic", imgURL);
             request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
 
         } catch (SQLException e) {

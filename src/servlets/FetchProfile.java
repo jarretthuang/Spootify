@@ -15,21 +15,30 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-@WebServlet(name = "ViewAllTracks")
-public class ViewAllTracks extends HttpServlet {
+@WebServlet(name = "FetchProfile", urlPatterns = {"/FetchProfile"})
+public class FetchProfile extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Connection connection = null;
-        ResultSet rs;
-        ArrayList<TrackObj> tracks = new ArrayList<>();
         int userId = Integer.parseInt(request.getParameter("userId").trim());
-        String profilePic = request.getParameter("profilePic");
-        String getAllSongs = "SELECT * FROM Track";
+        ResultSet rs, rs1;
+        ArrayList<TrackObj> tracks = new ArrayList<>();
+        String profilePic = "";
+
+        String getSongs = "SELECT * " +
+                "FROM Track, StoresTrack, spootify.SpootifyUser " +
+                "WHERE Track.trackId = StoresTrack.trackId AND StoresTrack.userId = spootify.SpootifyUser.userId " +
+                "AND spootify.SpootifyUser.userId = ?";
+
+        String getProfile = "SELECT * FROM spootify.SpootifyUser WHERE spootify.SpootifyUser.userId = ?";
 
         try {
             connection = DBConnection.getConnection();
 
             if (connection != null) {
-                PreparedStatement statement = connection.prepareStatement(getAllSongs);
+                PreparedStatement statement = connection.prepareStatement(getSongs);
+                PreparedStatement statement1 = connection.prepareStatement(getProfile);
+                statement.setInt(1, userId);
+                statement1.setInt(1, userId);
                 rs = statement.executeQuery();
 
                 while (rs.next()) {
@@ -44,10 +53,19 @@ public class ViewAllTracks extends HttpServlet {
                     tracks.add(track);
                 }
 
-                request.getSession().setAttribute("allTracks", tracks);
+                rs1 = statement1.executeQuery();
+                try {
+                    while(rs1.next()) {
+                        profilePic = rs1.getString("imageURL");
+                    }
+                } catch(Exception e) {
+                    profilePic = null;
+                }
+
+                request.getSession().setAttribute("tracksStoredByUser", tracks);
                 request.getSession().setAttribute("userId", userId);
                 request.getSession().setAttribute("profilePic", profilePic);
-                request.getRequestDispatcher("/viewTracks.jsp").forward(request, response);
+                request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
             }
 
 

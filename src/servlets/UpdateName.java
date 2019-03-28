@@ -17,6 +17,7 @@ public class UpdateName extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String newName = request.getParameter("newName");
         int userId = Integer.parseInt(request.getParameter("userId"));
+        String profilePic = request.getParameter("profilePic");
         Connection connection = null;
 
         String query = "UPDATE spootify.SpootifyUser SET spootify.SpootifyUser.name = ? WHERE spootify.SpootifyUser.userId = ?";
@@ -40,6 +41,7 @@ public class UpdateName extends HttpServlet {
 
         request.getSession().setAttribute("updateName", "Name updated!");
         request.getSession().setAttribute("userID", userId);
+        request.getSession().setAttribute("profilePic", profilePic);
         request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
     }
 

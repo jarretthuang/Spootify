@@ -1,19 +1,16 @@
-<%@ page import="java.sql.Connection" %>
-<%@ page import="Utility.DBConnection" %>
-<%@ page import="java.sql.PreparedStatement" %>
-<%@ page import="java.sql.SQLException" %>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
-  User: ashleybarkworth
-  Date: 2019-03-24
-  Time: 14:45
+  User: jarrett
+  Date: 2019-03-28
+  Time: 13:03
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <html>
+
 <head>
-    <title>Spootify - Search Songs</title>
+    <title>Spootify - Top Chart</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" genre="image/x-icon" href="img/favicon.ico">
@@ -34,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/frontend/assets/css/table.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/frontend/assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
+<body>
 
 <%
     if (request.getParameter("userID") != null) {
@@ -43,18 +41,12 @@
     if (request.getParameter("profilePic") == null && session.getAttribute("profilePic") == null) {
         request.getSession().setAttribute("profilePic", "https://www.georeferencer.com/static/img/person.png");
     }
-
-    if (request.getParameter("trackName") != null) {
-        request.getSession().setAttribute("trackName", request.getParameter("trackName"));
-    }
 %>
-
-<body>
 
 <div class="ui-panel">
     <div class="spootify-home">
         <a href="index.jsp"><div class="minimal-button">Spootify</div></a>
-        <div class="spootify-breadcrumb">> Search > Songs</div>
+        <div class="spootify-breadcrumb">> Browse > Most Popular Songs</div>
     </div>
     <img class="profile-pic do-not-invert" id="login-button"
          src="${profilePic}">
@@ -123,8 +115,8 @@
                     <div class="table100-body js-pscroll">
                         <table>
                             <tbody>
-                            <c:if test="${tracks ne null}">
-                                <c:forEach items="${tracks}" var="item">
+                            <c:if test="${mostSavedTrack ne null}">
+                                <c:forEach items="${mostSavedTrack}" var="item">
                                     <tr class="row100 body">
                                         <td class="cell100 column1">${item.getTrackId()}</td>
                                         <td class="cell100 column2">${item.getAnalyticsId()}</td>
@@ -140,44 +132,14 @@
                     </div>
                 </div>
             </div>
-        <form id="divisionExample" name="divisionExample" method="post" action="DivisionExample">
-            <input type="hidden" name="userId" value="${userId}">
-            <input type="hidden" name="profilePic" value="${profilePic}"/>
-            <button type="submit" class="simple-button minimal-button do-not-invert">Choose Songs That</button>
-            <select name = "divisor" id="divisor" class="form-select form-input invert-color no-set-size">
-                <option value = "playlist">are in every playlist</option>
-                <option value = "user">are stored by every user</option>
-                <option value = "artist">are created by every artist</option>
-            </select>
-        </form>
-
-        <form id="sortTracks" name="sortTracks" method="post" action="SortTracks">
-            <input type="hidden" name="userId" value="${userId}">
-            <input type="hidden" name="profilePic" value="${profilePic}"/>
-            <input type="hidden" name="trackName" value="${trackName}"/>
-            <button type="submit" class="simple-button minimal-button do-not-invert">Sort By</button>
-            <select name = "field" id="field" class="form-select form-input invert-color no-set-size">
-                <option value = "liveliness">liveliness</option>
-                <option value = "speechiness">speechiness</option>
-                <option value = "danceability">danceability</option>
-                <option value = "instrumentalness">instrumentalness</option>
-                <option value = "energy">energy</option>
-                <option value = "analyticsKey">key</option>
-                <option value = "loudness">loudness</option>
-                <option value = "tempo">tempo</option>
-            </select>
-            <select name = "order" id="order" class="form-select form-input invert-color no-set-size">
-                <option value = "ASC">ascending order</option>
-                <option value = "DESC">descending order</option>
-            </select>
-        </form>
-
         <form id="viewAllTracks" name="viewAllTracks" method="post" action="ViewAllTracks">
             <input type="hidden" name="userId" value="${userId}">
+            <input type="hidden" name="profilePic" value="${profilePic}"/>
             <button type="submit" class="simple-button minimal-button do-not-invert">Go to Browse</button>
         </form>
         <form action="ViewTracks" method="POST">
             <input type="hidden" name="userId" value="${userId}">
+            <input type="hidden" name="profilePic" value="${profilePic}"/>
             <button type="submit" class="simple-button minimal-button do-not-invert">Go to My Library</button>
         </form>
     </div>
@@ -199,8 +161,4 @@
 </div>
 
 </body>
-
-
 </html>
-
-

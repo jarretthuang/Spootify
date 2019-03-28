@@ -37,7 +37,14 @@ function init() {
     } else if (pageType === "> My Library > Tracks") {
         $(".playlists-view-container").hide();
         $(".switch-to-tracks").hide();
+    } else if (pageType === "> Browse > Add Tracks to Your Library") {
+        $(".playlists-view-container").hide();
+        $(".switch-to-tracks").hide();
+    } else if (pageType === "> Browse > Create Playlist") {
+        $(".tracks-view-container").hide();
+        $(".switch-to-playlists").hide();
     }
+
 
 
     $(".switch-to-tracks").click(function () {

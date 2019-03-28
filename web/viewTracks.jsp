@@ -42,14 +42,14 @@
 <div class="ui-panel">
     <div class="spootify-home">
         <a href="index.jsp"><div class="minimal-button">Spootify</div></a>
-        <c:if test="${userPlaylists == null}">
-            <div class="spootify-breadcrumb">> Browse > Tracks</div>
+        <c:if test="${allTracksToAddToPlaylist == null}">
+            <div class="spootify-breadcrumb">> Browse > Add Tracks to Your Library</div>
         </c:if>
-        <c:if test="${userPlaylists ne null}">
-            <div class="spootify-breadcrumb">> Browse > Playlists</div>
+        <c:if test="${allTracksToAddToPlaylist ne null}">
+            <div class="spootify-breadcrumb">> Browse > Create Playlist</div>
         </c:if>
 
-        <div class="spootify-breadcrumb-static">> Browse > Tracks</div>
+        <div class="spootify-breadcrumb-static">> Browse > Add Tracks to Your Library</div>
     </div>
     <div class="song-browser">
         <form id="addTracks" class="tracks-view-container" name="addTracks" method="post" action="ViewAllTracks">
@@ -189,7 +189,7 @@
 
 <div style="display: none;">
 
-    
+
 
 
 

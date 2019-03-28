@@ -143,15 +143,17 @@
                         </div>
                     </div>
                 </div>
-                <input class="form-input" type="text" name="description" value="Playlist Description">
-                <input type="hidden" name="userId" value="${userId}">
-                <button type="submit" class="simple-button minimal-button do-not-invert" value="">Create Playlist</button>
-                <c:if test="${successCreate ne null}">
-                    <span class="form-sub-title">${successCreate}, Playlist ID is ${playlistId}</span>
-                </c:if>
-                <c:if test="${failureCreate ne null}">
-                    <span class="form-sub-title">${failureCreate}</span>
-                </c:if>
+                <div class="minimal-form">
+                    <input class="simple-button minimal-button do-not-invert" type="text" name="description" placeholder="Playlist Description" required>
+                    <input type="hidden" name="userId" value="${userId}">
+                    <button type="submit" class="simple-button minimal-button do-not-invert" value="">Create Playlist</button>
+                    <c:if test="${successCreate ne null}">
+                        <span class="form-sub-title">${successCreate}, Playlist ID is ${playlistId}</span>
+                    </c:if>
+                    <c:if test="${failureCreate ne null}">
+                        <span class="form-sub-title">${failureCreate}</span>
+                    </c:if>
+                </div>
             </form>
         </c:if>
         <form id="addTracksToPlaylist" name="addTracksToPlaylist" method="post" action="ViewTracksForPlaylist">

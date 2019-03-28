@@ -231,12 +231,7 @@
 
 
 
-
-
 <div style="display: none;">
-
-
-
 
 
 
@@ -258,14 +253,13 @@
         <button>Search Playlists</button>
     </form>
 
-    <h3>View Tracks By Artist</h3>
-    <form id="searchTracksByArtist" name="searchTracksByArtist" method="post" action="ViewTracksByArtist">
-        <input type="hidden" name="userId" value="${userId}">
-        <label for="artist">Artist: </label><input type="text" id="artistSong" name="artistSong">
-        <button>Search Tracks by Artist</button><br>
-    </form>
 
-    <c:if test="${artistTracks ne null}">
+    <form id="mostSavedTrack" name="mostSavedTrack" method="post" action="MostSavedTrack">
+        <input type="hidden" name="userId" value="${userId}">
+        <label for="playlist">View Most Saved Track</label><input/>
+        <button>View Most Saved Track</button>
+    </form>
+    <c:if test="${mostSavedTrack ne null}">
         <table>
             <tr>
                 <th>TrackId</th>
@@ -275,7 +269,7 @@
                 <th>Duration</th>
                 <th>Popularity</th>
             </tr>
-            <c:forEach items="${artistTracks}" var="item">
+            <c:forEach items="${mostSavedTrack}" var="item">
                 <tr>
                     <td>${item.getTrackId()}</td>
                     <td>${item.getAnalyticsId()}</td>
@@ -287,7 +281,6 @@
             </c:forEach>
         </table>
     </c:if>
-
 </div>
 </body>
 </html>

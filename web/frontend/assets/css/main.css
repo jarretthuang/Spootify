@@ -509,5 +509,21 @@ input[type=number]::-webkit-outer-spin-button {
     grid-row: 1/2;
     justify-self: start;
     align-self: center;
+    display: grid;
+    grid-column-gap: 10px;
+    grid-template-rows: 1fr;
 }
 
+.spootify-breadcrumb {
+    grid-column: 2/3;
+    align-self: center;
+}
+
+
+.playlists-view-container {
+    display: none;
+}
+
+.switch-to-tracks {
+    display: none;
+}

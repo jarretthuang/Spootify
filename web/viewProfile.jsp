@@ -54,7 +54,10 @@
 %>
 
 <div class="ui-panel">
-    <a class="spootify-home" href='index.jsp'><div class="minimal-button">Spootify</div></a>
+    <div class="spootify-home">
+        <a href="index.jsp"><div class="minimal-button">Spootify</div></a>
+        <div class="spootify-breadcrumb">> My Library > Tracks</div>
+    </div>
     <img class="profile-pic do-not-invert" id="login-button"
          src="https://img1.ak.crunchyroll.com/i/spire3/3614810e9ada5235038e8deb4adc264c1447729591_large.jpg">
     <div class="popup-form minimal-form">
@@ -101,7 +104,7 @@
         <div class="title-padding"></div>
     </div>
     <div class="song-browser">
-        <form id="deleteTrack" name="deleteTrack" method="post" action="DeleteTrack">
+        <form id="deleteTrack" class="tracks-view-container" name="deleteTrack" method="post" action="DeleteTrack">
             <input type="hidden" name="userId" value="${userId}">
             <div class="wrap-table100">
                     <div class="table100 ver5 m-b-110 tracks-table">
@@ -150,9 +153,63 @@
                 <span class="form-sub-title">${failureDelete}</span>
             </c:if>
         </form>
+        <form id="deletePlaylist" class="playlists-view-container" name="deletePlaylist" method="post" action="DeletePlaylist">
+            <input type="hidden" name="userId" value="${userId}">
+            <div class="wrap-table100">
+                <div class="table100 ver5 m-b-110 playlists-table">
+                    <div class="table100-head">
+                        <table>
+                            <thead>
+                            <tr class="row100 head">
+                                <th class="cell100 column1">Playlist ID</th>
+                                <th class="cell100 column2">Playlist Description</th>
+                                <th class="cell100 column3">Public</th>
+                                <th class="cell100 column4">Number of Songs</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="table100-body js-pscroll">
+                        <table>
+                            <tbody>
+                            <c:if test="${userPlaylists ne null}">
+                                <c:forEach items="${userPlaylists}" var="item">
+                                    <tr class="row100 body">
+                                        <td class="cell100 column1">${item.getPlaylistId()}</td>
+                                        <td class="cell100 column2">${item.getDescription()}</td>
+                                        <td class="cell100 column3">${item.isPublic()}</td>
+                                        <td class="cell100 column4">${numSongs[loop.index]}</td>
+                                        <td class="cell100 column5"><div class="checkbox">
+                                            <label><input type="checkbox" name="deletePlaylist" value="${item.getPlaylistId()}"></label></div></td>
+                                    </tr>
+                                </c:forEach>
+                            </c:if>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="simple-button minimal-button do-not-invert" value="">Delete Selected Playlists</button>
+            <c:if test="${successDeletePlaylist ne null}">
+                <span class="form-sub-title">${successDeletePlaylist}</span>
+            </c:if>
+            <c:if test="${failureDeletePlaylist ne null}">
+                <span class="form-sub-title">${failureDeletePlaylist}</span>
+            </c:if>
+        </form>
+        <form id="viewPlaylist" name="viewPlaylist" method="post" action="ViewPlaylists">
+            <input type="hidden" name="userId" value="${userId}">
+            <button type="submit" class="simple-button minimal-button do-not-invert switch-to-playlists" value="">Show Playlists</button>
+            <button class="simple-button minimal-button do-not-invert switch-to-tracks" value="">Show Tracks</button>
+        </form>
     </div>
 
+
+
+
+
     <div style="display: none;">
+
 
         <label for="viewTracks">View Tracks:</label>
         <form id="viewTracks" name="viewTracks" method="post" action="ViewTracks">
@@ -202,45 +259,8 @@
         </c:if>
 
 
-            <label for="viewPlaylist">View Your Playlists:</label>
-            <form id="viewPlaylist" name="viewPlaylist" method="post" action="ViewPlaylists">
-                <input type="hidden" name="userId" value="${userId}">
-                <button>Select Tracks</button>
-            </form>
 
-            <c:if test="${userPlaylists ne null}">
-            <form id="deletePlaylist" name="deletePlaylist" method="post" action="DeletePlaylist">
-                <input type="hidden" name="userId" value="${userId}">
-                <table>
-                    <tr>
-                        <th>Playlist ID</th>
-                        <th>Playlist Description</th>
-                        <th>Public</th>
-                        <th>Number of Songs</th>
-                    </tr>
-                    <c:forEach items="${userPlaylists}" var="item" varStatus="loop">
-                        <tr>
-                            <td>${item.getPlaylistId()}</td>
-                            <td>${item.getDescription()}</td>
-                            <td>${item.isPublic()}</td>
-                            <td>${numSongs[loop.index]}</td>
-                            <td><div class="checkbox">
-                                <label><input type="checkbox" name="deletePlaylist" value="${item.getPlaylistId()}"></label></div></td>
-                        </tr>
-                    </c:forEach>
-                </table>
-                <input type="hidden" name="userId" value="${userId}">
-                <input type="submit" value="Delete Playlists" />
-            </form>
-                <c:if test="${successDeletePlaylist ne null}">
-                    <td>${successDeletePlaylist}</td>
-                </c:if>
-                <c:if test="${failureDeletePlaylist ne null}">
-                    <td>${failureDeletePlaylist}</td>
-                </c:if>
-            </c:if>
 
-        <br>
         <label for="addTracksToPlaylist">Create Playlist:</label>
         <form id="addTracksToPlaylist" name="addTracksToPlaylist" method="post" action="ViewTracksForPlaylist">
             <input type="hidden" name="userId" value="${userId}">

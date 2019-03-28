@@ -30,6 +30,17 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/frontend/assets/css/table.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/frontend/assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
+
+<%
+    if (request.getParameter("userID") != null) {
+        request.getSession().setAttribute("userId", request.getParameter("userID"));
+    }
+
+    if (request.getParameter("profilePic") == null) {
+        request.getSession().setAttribute("profilePic", "https://www.georeferencer.com/static/img/person.png");
+    }
+%>
+
 <body>
 <table>
     <tr>

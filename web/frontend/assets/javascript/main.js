@@ -51,8 +51,6 @@ function init() {
         $(".switch-to-playlists").hide();
     }
 
-
-
     $(".switch-to-tracks").click(function () {
        $(".playlists-view-container").hide();
        $(".tracks-view-container").show();
@@ -61,6 +59,18 @@ function init() {
        $(".spootify-breadcrumb").hide();
        $(".spootify-breadcrumb-static").show();
     });
+
+    function animateSpootify() {
+        let text = $(".text");
+        if (text.hasClass("hidden")) {
+            text.removeClass("hidden");
+        } else {
+            text.addClass("hidden");
+        }
+        window.setTimeout(animateSpootify, 2000);
+    }
+
+    animateSpootify();
 }
 
 function sendQuery(query) {

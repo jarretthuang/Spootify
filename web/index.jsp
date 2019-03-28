@@ -27,7 +27,17 @@
 <div class="hoja" id="logo-homepage">
   <img id="music-note" src="${pageContext.request.contextPath}/frontend/assets/img/whiteMusicNote.png">
 </div>
-<div id="spootify-name">Spootify</div>
+<div id="spootify-name">
+  <ul class="text hidden">
+    <li>S</li>
+    <li class="ghost">p</li>
+    <li class="ghost">o</li>
+    <li class="ghost">o</li>
+    <li class="ghost">t</li>
+    <li class="ghost">i</li>
+    <li class="ghost">f</li>
+    <li class="ghost">y</li>
+  </ul></div>
 <div id="home-buttons">
   <a href='register.jsp' id="register-button" ><div class="minimal-button">SIGN UP</div></a>
   <div id="login-button" class="minimal-button">LOG IN</div>

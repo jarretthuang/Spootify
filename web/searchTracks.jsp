@@ -1,3 +1,7 @@
+<%@ page import="java.sql.Connection" %>
+<%@ page import="Utility.DBConnection" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.SQLException" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -39,6 +43,7 @@
     if (request.getParameter("profilePic") == null) {
         request.getSession().setAttribute("profilePic", "https://www.georeferencer.com/static/img/person.png");
     }
+
 %>
 
 <body>

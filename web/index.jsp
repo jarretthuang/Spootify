@@ -34,7 +34,7 @@
 </div>
 <span id="copy-right" class="noselect">© 2019 BARELY LEGAL. ALL RIGHTS RESERVED.</span>
 <div class="minimal-form popup-form">
-  <form action="ViewTracks" method="POST" class="da-form">
+  <form action="FetchProfile" method="POST" class="da-form">
     <span class="form-title">Your Spootify</span>
     <input id="userId" class="form-input" name="userId" type="text" placeholder="Your User ID" required>
     <div class="submit-button-wrapper">

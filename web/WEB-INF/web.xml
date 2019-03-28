@@ -226,13 +226,13 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>MostSavedTrack</servlet-name>
-        <servlet-class>servlets.MostSavedTrack</servlet-class>
+        <servlet-name>FetchProfile</servlet-name>
+        <servlet-class>servlets.FetchProfile</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>MostSavedTrack</servlet-name>
-        <url-pattern>/MostSavedTrack</url-pattern>
+        <servlet-name>FetchProfile</servlet-name>
+        <url-pattern>/FetchProfile</url-pattern>
     </servlet-mapping>
 
 

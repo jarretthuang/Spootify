@@ -57,7 +57,7 @@ public class ViewPlaylists extends HttpServlet {
 
                 request.getSession().setAttribute("userPlaylists", playlists);
                 request.getSession().setAttribute("numSongs", numSongs);
-
+                request.getSession().setAttribute("userId", userId);
                 request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
             }
 

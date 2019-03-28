@@ -9,6 +9,9 @@
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="java.sql.ResultSet" %>
+<%@ page import="model.TrackObj" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%--
   Created by IntelliJ IDEA.
@@ -156,6 +159,7 @@
             <input type="hidden" name="userId" value="${userId}">
             <button>View Tracks</button>
         </form>
+
         <label for="addTracks">Add Tracks:</label>
         <form id="addTracks" name="addTracks" method="post" action="ViewAllTracks">
             <input type="hidden" name="userId" value="${userId}">

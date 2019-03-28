@@ -1,4 +1,5 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: ashleybarkworth
@@ -49,7 +50,9 @@
         <input class="form-input" type="hidden" name="guestId" value="${guestId}">
         <div class="form-input" type="text" disabled placeholder="Your Balance Is">
             <c:if test="${balance ne null}">
-                <c:out value="Your balance is $${balance}"></c:out>
+                <fmt:setLocale value = "en_CA"/>
+                <fmt:formatNumber value = "${balance}" type = "currency" var = "formattedBalance"/>
+                <c:out value="Your balance is $${formattedBalance}"></c:out>
             </c:if>
         </div>
         <button class="minimal-button simple-button" type="submit" name="balance">Check Balance</button>
@@ -61,8 +64,7 @@
         <button class="minimal-button simple-button" type="submit" name="register">Update Balance</button>
         <div class="form-sub-title">
             <c:if test="${newBalance ne null}">
-                <fmt:setLocale value="en_CA"/>
-                <fmt:formatNumber value="${newBalance}" type="currency" var="formattedNewBalance"/>
+                <fmt:formatNumber value = "${newBalance}" type = "currency" var = "formattedNewBalance"/>
                 <c:out value="Your balance is ${formattedNewBalance}"></c:out>
             </c:if>
         </div>

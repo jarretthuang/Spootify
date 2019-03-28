@@ -48,8 +48,52 @@
         <c:if test="${allTracksToAddToPlaylist ne null}">
             <div class="spootify-breadcrumb">> Browse > Create Playlist</div>
         </c:if>
-
         <div class="spootify-breadcrumb-static">> Browse > Add Tracks to Your Library</div>
+    </div>
+    <img class="profile-pic do-not-invert" id="login-button"
+         src="https://img1.ak.crunchyroll.com/i/spire3/3614810e9ada5235038e8deb4adc264c1447729591_large.jpg">
+    <div class="popup-form minimal-form">
+        <div class="form-title title-padding">User Settings</div>
+        <form class="small-form" action="UpdateName" method="post">
+            <span class="form-sub-title">Update Username</span>
+            <input class="form-input" type="text" id="newName" name="newName" required>
+            <input type="hidden" name="userId" value="${userId}"/>
+            <button type="submit" class="minimal-button simple-button">Confirm</button>
+            <div class="form-sub-title">
+                <c:if test="${updateName ne null}">
+                    <c:out value="${updateName}"></c:out>
+                </c:if>
+            </div>
+        </form>
+        <form class="small-form" action="UpdateProfile" method="post">
+            <span class="form-sub-title">Update Profile Image</span>
+            <input class="form-input" type="text" id="profilePic" name="profilePic" required>
+            <input type="hidden" name="userId" value="${userId}"/>
+            <button type="submit" class="minimal-button simple-button">Confirm</button>
+            <div class="form-sub-title">
+                <c:if test="${updateProfile ne null}">
+                    <c:out value="${updateProfile}"></c:out>
+                </c:if>
+            </div>
+        </form>
+        <form class="small-form" action="AddDiscount" method="post">
+            <span class="form-sub-title">Apply Discount</span>
+            <select class="form-input form-select" name="discount" id="discount">
+                <option value="Student">Student</option>
+                <option value="Military">Military</option>
+                <option value="Family">Family</option>
+            </select>
+            <input type="hidden" name="userId" value="${userId}"/>
+            <button type="submit" class="minimal-button simple-button">Confirm</button>
+            <div class="form-sub-title">
+                <c:if test="${addDiscount ne null}">
+                    <c:out value="${addDiscount}"></c:out>
+                    <br>
+                    <c:out value="Your new monthly rate is ${monthlyRate}"></c:out>
+                </c:if>
+            </div>
+        </form>
+        <div class="title-padding"></div>
     </div>
     <div class="song-browser">
         <form id="addTracks" class="tracks-view-container" name="addTracks" method="post" action="ViewAllTracks">
@@ -158,7 +202,7 @@
         </c:if>
         <form id="addTracksToPlaylist" name="addTracksToPlaylist" method="post" action="ViewTracksForPlaylist">
             <input type="hidden" name="userId" value="${userId}">
-            <button type="submit" class="simple-button minimal-button do-not-invert switch-to-playlists">Create Playlist</button>
+            <button type="submit" class="simple-button minimal-button do-not-invert switch-to-playlists">Go to Playlist Creation</button>
         </form>
         <button class="simple-button minimal-button do-not-invert switch-to-tracks">Show All Tracks</button>
         <%--<form id="viewTracks" name="viewTracks" method="post" action="ViewTracks">--%>

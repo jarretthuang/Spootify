@@ -61,7 +61,6 @@
         <c:if test="${userPlaylists ne null}">
             <div class="spootify-breadcrumb">> My Library > Playlists</div>
         </c:if>
-
         <div class="spootify-breadcrumb-static">> My Library > Tracks</div>
     </div>
     <img class="profile-pic do-not-invert" id="login-button"

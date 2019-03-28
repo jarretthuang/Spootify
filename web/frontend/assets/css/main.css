@@ -527,7 +527,3 @@ input[type=number]::-webkit-outer-spin-button {
 .tracks-view-container {
     z-index: 9;
 }
-
-.switch-to-tracks {
-    display: none;
-}

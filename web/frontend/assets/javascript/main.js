@@ -29,8 +29,21 @@ function init() {
         });
     });
 
+    let pageType = $(".spootify-breadcrumb").text();
+
+    if (pageType === "> My Library > Playlists") {
+        $(".tracks-view-container").hide();
+        $(".switch-to-playlists").hide();
+    } else {
+        $(".playlists-view-container").hide();
+        $(".switch-to-tracks").hide();
+    }
+
+
     $(".switch-to-tracks").click(function () {
-       $(".tracks-view-container").css("z-index", "11");
+       $(".playlists-view-container").hide();
+       $(".switch-to-tracks").hide();
+       $(".switch-to-playlists").show();
     });
 }
 

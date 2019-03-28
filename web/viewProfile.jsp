@@ -206,12 +206,8 @@
         </c:if>
         <form id="viewPlaylist" name="viewPlaylist" method="post" action="ViewPlaylists">
             <input type="hidden" name="userId" value="${userId}">
-            <c:if test="${userPlaylists == null}">
-                <button type="submit" class="simple-button minimal-button do-not-invert switch-to-playlists">Show Playlists</button>
-            </c:if>
-            <c:if test="${userPlaylists ne null}">
-                <button class="simple-button minimal-button do-not-invert switch-to-tracks">Show Tracks</button>
-            </c:if>
+            <button type="submit" class="simple-button minimal-button do-not-invert switch-to-playlists">Show Playlists</button>
+            <button class="simple-button minimal-button do-not-invert switch-to-tracks">Show Tracks</button>
         </form>
         <form id="viewTracks" name="viewTracks" method="post" action="ViewTracks">
             <input type="hidden" name="userId" value="${userId}">

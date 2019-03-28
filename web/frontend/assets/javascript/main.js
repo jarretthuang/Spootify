@@ -41,8 +41,8 @@ function init() {
 
 
     $(".switch-to-tracks").click(function () {
-       $(".playlists-view-container").hide();
-       $(".switch-to-tracks").hide();
+       $(".spootify-breadcrumb").text("> My Library > Tracks");
+       $(".tracks-view-container").show();
        $(".switch-to-playlists").show();
     });
 }

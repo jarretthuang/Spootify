@@ -22,6 +22,7 @@ public class MostSavedTrack extends HttpServlet {
 
         Connection connection = null;
         int userId = Integer.parseInt(request.getParameter("userId"));
+        String profilePic = request.getParameter("profilePic");
 
         String query = "SELECT t.trackId, t.name, t.duration, t.popularity " +
                 "FROM Track t, StoresTrack st, SpootifyUser u " +
@@ -57,6 +58,7 @@ public class MostSavedTrack extends HttpServlet {
 
             request.getSession().setAttribute("mostSavedTrack", tracks);
             request.getSession().setAttribute("userId", userId);
+            request.getSession().setAttribute("profilePic", profilePic);
             request.getRequestDispatcher("/mostSavedTrack.jsp").forward(request, response);
 
         } catch (SQLException e) {

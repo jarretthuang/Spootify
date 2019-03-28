@@ -20,6 +20,7 @@ public class DeletePlaylist extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String[] selectedTracks = request.getParameterValues("deletePlaylist");
         int userId = Integer.parseInt(request.getParameter("userId"));
+        String imgURL = request.getParameter("profilePic");
 
         if (selectedTracks == null) {
             request.getSession().setAttribute("failureDeletePlaylist", "No playlists selected");
@@ -50,6 +51,7 @@ public class DeletePlaylist extends HttpServlet {
 
             request.getSession().setAttribute("successDeletePlaylist", "Deleted selected playlists!");
             request.getSession().setAttribute("userId", userId);
+            request.getSession().setAttribute("profilePic", imgURL);
             request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
 
         } catch (SQLException e) {

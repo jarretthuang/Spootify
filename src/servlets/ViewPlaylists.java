@@ -20,6 +20,7 @@ public class ViewPlaylists extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Connection connection = null;
         int userId = Integer.parseInt(request.getParameter("userId"));
+        String profilePic = request.getParameter("profilePic");
         ResultSet rs;
         ArrayList<PlayList> playlists = new ArrayList<>();
         ArrayList<Integer> numSongs = new ArrayList<>();
@@ -58,6 +59,7 @@ public class ViewPlaylists extends HttpServlet {
                 request.getSession().setAttribute("userPlaylists", playlists);
                 request.getSession().setAttribute("numSongs", numSongs);
                 request.getSession().setAttribute("userId", userId);
+                request.getSession().setAttribute("profilePic", profilePic);
                 request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
             }
 

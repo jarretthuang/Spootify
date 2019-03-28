@@ -26,6 +26,7 @@ public class CreatePlaylist extends HttpServlet {
         }
 
         int userId = Integer.parseInt(request.getParameter("userId"));
+        String profilePic = request.getParameter("profilePic");
         String description = request.getParameter("description").trim();
         int playlistId = Math.abs(description.hashCode());
         Connection connection = null;
@@ -66,6 +67,7 @@ public class CreatePlaylist extends HttpServlet {
             request.getSession().setAttribute("successCreate", "Created new playlist!");
             request.getSession().setAttribute("playlistId", playlistId);
             request.getSession().setAttribute("userId", userId);
+            request.getSession().setAttribute("profilePic", profilePic);
             request.getRequestDispatcher("/viewTracks.jsp").forward(request, response);
 
         } catch (SQLException e) {

@@ -18,6 +18,7 @@ public class AddDiscount extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Connection connection = null;
         int userId = Integer.parseInt(request.getParameter("userId"));
+        String imgURL = request.getParameter("profilePic");
         String discount = request.getParameter("discount");
         String query = "";
         double monthlyRate  = 15.00; // default
@@ -52,6 +53,7 @@ public class AddDiscount extends HttpServlet {
 
             request.getSession().setAttribute("addDiscount", "Discount Added!");
             request.getSession().setAttribute("monthlyRate", monthlyRate);
+            request.getSession().setAttribute("profilePic", imgURL);
             request.getSession().setAttribute("userID", userId);
             request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
 

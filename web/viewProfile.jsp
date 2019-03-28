@@ -50,6 +50,10 @@
     if (request.getParameter("userID") != null) {
         request.getSession().setAttribute("userId", request.getParameter("userID"));
     }
+
+    if (request.getParameter("profilePic") == null) {
+        request.getSession().setAttribute("profilePic", "https://www.georeferencer.com/static/img/person.png");
+    }
 %>
 
 <div class="ui-panel">
@@ -64,11 +68,12 @@
         <div class="spootify-breadcrumb-static">> My Library > Tracks</div>
     </div>
     <img class="profile-pic do-not-invert" id="login-button"
-         src="https://img1.ak.crunchyroll.com/i/spire3/3614810e9ada5235038e8deb4adc264c1447729591_large.jpg">
+         src="${profilePic}">
     <div class="popup-form minimal-form">
         <div class="form-title title-padding">User Settings</div>
         <form class="small-form" action="UpdateName" method="post">
             <span class="form-sub-title">Update Username</span>
+            <input type="hidden" name="profilePic" value="${profilePic}"/>
             <input class="form-input" type="text" id="newName" name="newName" required>
             <input type="hidden" name="userId" value="${userId}"/>
             <button type="submit" class="minimal-button simple-button">Confirm</button>
@@ -97,6 +102,7 @@
                 <option value="Family">Family</option>
             </select>
             <input type="hidden" name="userId" value="${userId}"/>
+            <input type="hidden" name="profilePic" value="${profilePic}"/>
             <button type="submit" class="minimal-button simple-button">Confirm</button>
             <div class="form-sub-title">
                 <c:if test="${addDiscount ne null}">
@@ -110,6 +116,7 @@
     </div>
     <div class="song-browser">
         <form id="deleteTrack" class="tracks-view-container" name="deleteTrack" method="post" action="DeleteTrack">
+                <input type="hidden" name="profilePic" value="${profilePic}"/>
                 <input type="hidden" name="userId" value="${userId}">
                 <div class="wrap-table100">
                     <div class="table100 ver5 m-b-110 tracks-table">
@@ -161,6 +168,7 @@
         <c:if test="${userPlaylists ne null}">
             <form id="deletePlaylist" class="playlists-view-container" name="deletePlaylist" method="post" action="DeletePlaylist">
                 <input type="hidden" name="userId" value="${userId}">
+                <input type="hidden" name="profilePic" value="${profilePic}"/>
                 <div class="wrap-table100">
                     <div class="table100 ver5 m-b-110 playlists-table">
                         <div class="table100-head">
@@ -206,11 +214,13 @@
         </c:if>
         <form id="viewPlaylist" name="viewPlaylist" method="post" action="ViewPlaylists">
             <input type="hidden" name="userId" value="${userId}">
+            <input type="hidden" name="profilePic" value="${profilePic}"/>
             <button type="submit" class="simple-button minimal-button do-not-invert switch-to-playlists">Show Playlists</button>
         </form>
         <button class="simple-button minimal-button do-not-invert switch-to-tracks">Show Tracks</button>
         <form id="viewAllTracks" name="viewAllTracks" method="post" action="ViewAllTracks">
             <input type="hidden" name="userId" value="${userId}">
+            <input type="hidden" name="profilePic" value="${profilePic}"/>
             <button type="submit" class="simple-button minimal-button do-not-invert">Browse</button>
         </form>
     </div>

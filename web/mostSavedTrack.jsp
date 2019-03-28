@@ -38,7 +38,7 @@
         request.getSession().setAttribute("userId", request.getParameter("userID"));
     }
 
-    if (request.getParameter("profilePic") == null) {
+    if (request.getParameter("profilePic") == null && session.getAttribute("profilePic") == null) {
         request.getSession().setAttribute("profilePic", "https://www.georeferencer.com/static/img/person.png");
     }
 %>

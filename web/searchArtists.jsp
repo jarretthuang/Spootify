@@ -39,7 +39,7 @@
         request.getSession().setAttribute("userId", request.getParameter("userID"));
     }
 
-    if (request.getParameter("profilePic") == null) {
+    if (request.getParameter("profilePic") == null && session.getAttribute("profilePic") == null) {
         request.getSession().setAttribute("profilePic", "https://www.georeferencer.com/static/img/person.png");
     }
 %>
@@ -50,7 +50,7 @@
         <div class="spootify-breadcrumb">> Search > Artists</div>
     </div>
     <img class="profile-pic do-not-invert" id="login-button"
-         src="https://img1.ak.crunchyroll.com/i/spire3/3614810e9ada5235038e8deb4adc264c1447729591_large.jpg">
+         src="${profilePic}">
     <div class="popup-form minimal-form">
         <div class="form-title title-padding">User Settings</div>
         <form class="small-form" action="UpdateName" method="post">

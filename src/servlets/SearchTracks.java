@@ -20,6 +20,8 @@ public class SearchTracks extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Connection connection = null;
         String trackName = request.getParameter("track");
+        String profilePic = request.getParameter("profilePic");
+        int userId = Integer.parseInt(request.getParameter("userId"));
         ResultSet rs;
         ArrayList<TrackObj> tracks = new ArrayList<>();
 
@@ -48,7 +50,9 @@ public class SearchTracks extends HttpServlet {
                 }
 
                 request.getSession().setAttribute("tracks", tracks);
-
+                request.getSession().setAttribute("trackName", trackName);
+                request.getSession().setAttribute("userId", userId);
+                request.getSession().setAttribute("profilePic", profilePic);
                 request.getRequestDispatcher("/searchTracks.jsp").forward(request, response);
             }
 

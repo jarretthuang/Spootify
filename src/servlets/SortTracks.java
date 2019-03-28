@@ -21,14 +21,16 @@ public class SortTracks extends HttpServlet {
         Connection connection = null;
         String field = request.getParameter("field");
         String order = request.getParameter("order");
+        String trackName = request.getParameter("trackName");
+        String profilePic = request.getParameter("profilePic");
         int userId = Integer.parseInt(request.getParameter("userId"));
         ResultSet rs;
         ArrayList<TrackObj> tracks = new ArrayList<>();
 
         String getSongs = "SELECT * " +
-                "FROM Track, Analytics, StoresTrack " +
-                "WHERE Track.trackId = Analytics.trackId AND StoresTrack.trackId = Track.trackId " +
-                "AND StoresTrack.userId = ? " +
+                "FROM Track, Analytics " +
+                "WHERE Track.trackId = Analytics.trackId " +
+                "AND Track.name LIKE ? " +
                 "ORDER BY " + "Analytics." + field + " " + order;
 
         try {
@@ -36,7 +38,7 @@ public class SortTracks extends HttpServlet {
 
             if (connection != null) {
                 PreparedStatement statement = connection.prepareStatement(getSongs);
-                statement.setInt(1, userId);
+                statement.setString(1, "%" + trackName + "%");
                 rs = statement.executeQuery();
 
                 while (rs.next()) {
@@ -52,7 +54,9 @@ public class SortTracks extends HttpServlet {
                 }
 
                 request.getSession().setAttribute("tracks", tracks);
+                request.getSession().setAttribute("trackName", trackName);
                 request.getSession().setAttribute("userId", userId);
+                request.getSession().setAttribute("profilePic", profilePic);
                 request.getRequestDispatcher("/searchTracks.jsp").forward(request, response);
             }
 

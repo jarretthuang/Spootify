@@ -20,6 +20,7 @@ public class DivisionExample extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int userId = Integer.parseInt(request.getParameter("userId"));
         String divisor = request.getParameter("divisor");
+        String profilePic = request.getParameter("profilePic");
         ArrayList<TrackObj> tracks = new ArrayList<>();
         String division = "";
 
@@ -83,6 +84,7 @@ public class DivisionExample extends HttpServlet {
 
             request.getSession().setAttribute("tracks", tracks);
             request.getSession().setAttribute("userId", userId);
+            request.getSession().setAttribute("profilePic", profilePic);
             request.getRequestDispatcher("/searchTracks.jsp").forward(request, response);
 
         } catch (SQLException e) {

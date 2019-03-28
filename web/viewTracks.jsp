@@ -50,6 +50,9 @@
         </c:if>
         <div class="spootify-breadcrumb-static">> Browse > Add Tracks to Your Library</div>
     </div>
+    <img class="search-icon"
+         src="${pageContext.request.contextPath}/frontend/assets/img/search-icon-white.png">
+  
     <img class="profile-pic do-not-invert" id="login-button"
          src="https://img1.ak.crunchyroll.com/i/spire3/3614810e9ada5235038e8deb4adc264c1447729591_large.jpg">
     <div class="popup-form minimal-form">
@@ -76,7 +79,7 @@
                 </c:if>
             </div>
         </form>
-        <form class="small-form" action="AddDiscount" method="post">
+        <form class="small-form" id="searchTracks" action="AddDiscount" method="post">
             <span class="form-sub-title">Apply Discount</span>
             <select class="form-input form-select" name="discount" id="discount">
                 <option value="Student">Student</option>

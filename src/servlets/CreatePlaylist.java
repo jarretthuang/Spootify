@@ -26,10 +26,11 @@ public class CreatePlaylist extends HttpServlet {
         }
 
         int userId = Integer.parseInt(request.getParameter("userId"));
-        String playlist = request.getParameter("description");
-        int playlistId = playlist.hashCode();
+        String description = request.getParameter("description").trim();
+        int playlistId = Math.abs(description.hashCode());
         Connection connection = null;
 
+        String addPlaylist = "INSERT INTO Playlist VALUES (?,\'Y\',\'" + description + "\')";
         String addTrackToPlaylist = "INSERT IGNORE INTO spootify.TrackInPlaylist VALUES (?,?)";
         String followPlaylist = "INSERT IGNORE INTO spootify.FollowsPlaylist VALUES (?,?)";
 
@@ -38,6 +39,11 @@ public class CreatePlaylist extends HttpServlet {
             connection = DBConnection.getConnection();
 
             if (connection != null) {
+
+                PreparedStatement addPlaylistStatement = connection.prepareStatement(addPlaylist);
+                addPlaylistStatement.setInt(1, playlistId);
+
+                addPlaylistStatement.executeUpdate();
 
                 for (String track: selectedTracks) {
                     int trackId = Integer.parseInt(track);

@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 @WebServlet(name = "MostSavedTrack", urlPatterns = {"MostSavedTrack"})
 public class MostSavedTrack extends HttpServlet {
@@ -29,7 +30,7 @@ public class MostSavedTrack extends HttpServlet {
                 "GROUP BY t.trackId " +
                 "HAVING COUNT(*) > ALL (SELECT COUNT(*) FROM StoresTrack WHERE t.trackId != trackId GROUP BY trackId);";
 
-        TrackObj track = new TrackObj();
+        ArrayList<TrackObj> tracks = new ArrayList<>();
 
         try {
             connection = DBConnection.getConnection();
@@ -40,15 +41,21 @@ public class MostSavedTrack extends HttpServlet {
 
                 ResultSet rs = statement.executeQuery();
 
+                while (rs.next()) {
+                    TrackObj track = new TrackObj();
 
-                track.setTrackId(rs.getInt("trackId"));
-                track.setName(rs.getString("name"));
-                track.setDuration(rs.getInt("duration"));
-                track.setPopularity(rs.getInt("popularity"));
+                    track.setTrackId(rs.getInt("trackId"));
+                    track.setName(rs.getString("name"));
+                    track.setDuration(rs.getInt("duration"));
+                    track.setPopularity(rs.getInt("popularity"));
+
+                    tracks.add(track);
+
+                }
 
             }
 
-            request.getSession().setAttribute("mostSavedTrack", track);
+            request.getSession().setAttribute("mostSavedTrack", tracks);
             request.getSession().setAttribute("userId", userId);
             request.getRequestDispatcher("/mostSavedTrack.jsp").forward(request, response);
 

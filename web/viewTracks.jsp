@@ -137,7 +137,7 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="simple-button minimal-button do-not-invert" value="">Add Selected Tracks</button>
+            <button type="submit" class="simple-button minimal-button do-not-invert" value="">Add Selected Tracks to My Library</button>
             <c:if test="${success ne null}">
                 <span class="form-sub-title">${success}</span>
             </c:if>
@@ -204,8 +204,13 @@
             <input type="hidden" name="userId" value="${userId}">
             <button type="submit" class="simple-button minimal-button do-not-invert switch-to-playlists">Go to Playlist Creation</button>
         </form>
-        <button class="simple-button minimal-button do-not-invert switch-to-tracks">Show All Tracks</button>
-        <%--<form id="viewTracks" name="viewTracks" method="post" action="ViewTracks">--%>
+        <button class="simple-button minimal-button do-not-invert switch-to-tracks">Go to Adding Tracks</button>
+        <form action="ViewTracks" method="POST">
+            <input type="hidden" name="userId" value="${userId}">
+            <button type="submit" class="simple-button minimal-button do-not-invert">Go to My Library</button>
+        </form>
+
+    <%--<form id="viewTracks" name="viewTracks" method="post" action="ViewTracks">--%>
             <%--<input type="hidden" name="userId" value="${userId}">--%>
             <%--<button type="submit" class="simple-button minimal-button do-not-invert">Browse</button>--%>
         <%--</form>--%>

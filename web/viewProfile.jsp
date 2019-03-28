@@ -51,12 +51,7 @@
 %>
 
 <div class="ui-panel">
-    <a href='index.jsp'>
-            <div class="hoja small-logo-topleft">
-                <img class="music-note-small" src="${pageContext.request.contextPath}/frontend/assets/img/whiteMusicNote.png">
-                <div class="spootify-nametag">Spootify</div>
-            </div>
-        </a>
+    <a class="spootify-home" href='index.jsp'><div class="minimal-button">Spootify</div></a>
     <img class="profile-pic do-not-invert" id="login-button"
          src="https://img1.ak.crunchyroll.com/i/spire3/3614810e9ada5235038e8deb4adc264c1447729591_large.jpg">
     <div class="popup-form minimal-form">
@@ -103,205 +98,55 @@
         <div class="title-padding"></div>
     </div>
     <div class="song-browser">
-        <div class="wrap-table100">
-                    <div class="table100 ver5 m-b-110">
+        <form id="deleteTrack" name="deleteTrack" method="post" action="DeleteTrack">
+            <input type="hidden" name="userId" value="${userId}">
+            <div class="wrap-table100">
+                    <div class="table100 ver5 m-b-110 tracks-table">
                         <div class="table100-head">
                             <table>
                                 <thead>
                                 <tr class="row100 head">
-                                    <th class="cell100 column1">Class name</th>
-                                    <th class="cell100 column2">Type</th>
-                                    <th class="cell100 column3">Hours</th>
-                                    <th class="cell100 column4">Trainer</th>
-                                    <th class="cell100 column5">Spots</th>
+                                    <th class="cell100 column1">TrackId</th>
+                                    <th class="cell100 column2">AnalyticsId</th>
+                                    <th class="cell100 column3">AlbumId</th>
+                                    <th class="cell100 column4">Name</th>
+                                    <th class="cell100 column5">Duration</th>
+                                    <th class="cell100 column6">Popularity</th>
+                                    <th class="cell100 column7">(Select)</th>
                                 </tr>
                                 </thead>
                             </table>
                         </div>
-
                         <div class="table100-body js-pscroll">
                             <table>
                                 <tbody>
-                                <tr class="row100 body">
-                                    <td class="cell100 column1">Like a butterfly</td>
-                                    <td class="cell100 column2">Boxing</td>
-                                    <td class="cell100 column3">9:00 AM - 11:00 AM</td>
-                                    <td class="cell100 column4">Aaron Chapman</td>
-                                    <td class="cell100 column5">10</td>
-                                </tr>
-
-                                <tr class="row100 body">
-                                    <td class="cell100 column1">Mind & Body</td>
-                                    <td class="cell100 column2">Yoga</td>
-                                    <td class="cell100 column3">8:00 AM - 9:00 AM</td>
-                                    <td class="cell100 column4">Adam Stewart</td>
-                                    <td class="cell100 column5">15</td>
-                                </tr>
-
-                                <tr class="row100 body">
-                                    <td class="cell100 column1">Crit Cardio</td>
-                                    <td class="cell100 column2">Gym</td>
-                                    <td class="cell100 column3">9:00 AM - 10:00 AM</td>
-                                    <td class="cell100 column4">Aaron Chapman</td>
-                                    <td class="cell100 column5">10</td>
-                                </tr>
-
-                                <tr class="row100 body">
-                                    <td class="cell100 column1">Wheel Pose Full Posture</td>
-                                    <td class="cell100 column2">Yoga</td>
-                                    <td class="cell100 column3">7:00 AM - 8:30 AM</td>
-                                    <td class="cell100 column4">Donna Wilson</td>
-                                    <td class="cell100 column5">15</td>
-                                </tr>
-
-                                <tr class="row100 body">
-                                    <td class="cell100 column1">Playful Dancer's Flow</td>
-                                    <td class="cell100 column2">Yoga</td>
-                                    <td class="cell100 column3">8:00 AM - 9:00 AM</td>
-                                    <td class="cell100 column4">Donna Wilson</td>
-                                    <td class="cell100 column5">10</td>
-                                </tr>
-
-                                <tr class="row100 body">
-                                    <td class="cell100 column1">Zumba Dance</td>
-                                    <td class="cell100 column2">Dance</td>
-                                    <td class="cell100 column3">5:00 PM - 7:00 PM</td>
-                                    <td class="cell100 column4">Donna Wilson</td>
-                                    <td class="cell100 column5">20</td>
-                                </tr>
-
-                                <tr class="row100 body">
-                                    <td class="cell100 column1">Cardio Blast</td>
-                                    <td class="cell100 column2">Gym</td>
-                                    <td class="cell100 column3">5:00 PM - 7:00 PM</td>
-                                    <td class="cell100 column4">Randy Porter</td>
-                                    <td class="cell100 column5">10</td>
-                                </tr>
-
-                                <tr class="row100 body">
-                                    <td class="cell100 column1">Pilates Reformer</td>
-                                    <td class="cell100 column2">Gym</td>
-                                    <td class="cell100 column3">8:00 AM - 9:00 AM</td>
-                                    <td class="cell100 column4">Randy Porter</td>
-                                    <td class="cell100 column5">10</td>
-                                </tr>
-
-                                <tr class="row100 body">
-                                    <td class="cell100 column1">Supple Spine and Shoulders</td>
-                                    <td class="cell100 column2">Yoga</td>
-                                    <td class="cell100 column3">6:30 AM - 8:00 AM</td>
-                                    <td class="cell100 column4">Randy Porter</td>
-                                    <td class="cell100 column5">15</td>
-                                </tr>
-
-                                <tr class="row100 body">
-                                    <td class="cell100 column1">Yoga for Divas</td>
-                                    <td class="cell100 column2">Yoga</td>
-                                    <td class="cell100 column3">9:00 AM - 11:00 AM</td>
-                                    <td class="cell100 column4">Donna Wilson</td>
-                                    <td class="cell100 column5">20</td>
-                                </tr>
-
-                                <tr class="row100 body">
-                                    <td class="cell100 column1">Virtual Cycle</td>
-                                    <td class="cell100 column2">Gym</td>
-                                    <td class="cell100 column3">8:00 AM - 9:00 AM</td>
-                                    <td class="cell100 column4">Randy Porter</td>
-                                    <td class="cell100 column5">20</td>
-                                </tr>
-
-                                <tr class="row100 body">
-                                    <td class="cell100 column1">Like a butterfly</td>
-                                    <td class="cell100 column2">Boxing</td>
-                                    <td class="cell100 column3">9:00 AM - 11:00 AM</td>
-                                    <td class="cell100 column4">Aaron Chapman</td>
-                                    <td class="cell100 column5">10</td>
-                                </tr>
-
-                                <tr class="row100 body">
-                                    <td class="cell100 column1">Mind & Body</td>
-                                    <td class="cell100 column2">Yoga</td>
-                                    <td class="cell100 column3">8:00 AM - 9:00 AM</td>
-                                    <td class="cell100 column4">Adam Stewart</td>
-                                    <td class="cell100 column5">15</td>
-                                </tr>
-
-                                <tr class="row100 body">
-                                    <td class="cell100 column1">Crit Cardio</td>
-                                    <td class="cell100 column2">Gym</td>
-                                    <td class="cell100 column3">9:00 AM - 10:00 AM</td>
-                                    <td class="cell100 column4">Aaron Chapman</td>
-                                    <td class="cell100 column5">10</td>
-                                </tr>
-
-                                <tr class="row100 body">
-                                    <td class="cell100 column1">Wheel Pose Full Posture</td>
-                                    <td class="cell100 column2">Yoga</td>
-                                    <td class="cell100 column3">7:00 AM - 8:30 AM</td>
-                                    <td class="cell100 column4">Donna Wilson</td>
-                                    <td class="cell100 column5">15</td>
-                                </tr>
-
-                                <tr class="row100 body">
-                                    <td class="cell100 column1">Playful Dancer's Flow</td>
-                                    <td class="cell100 column2">Yoga</td>
-                                    <td class="cell100 column3">8:00 AM - 9:00 AM</td>
-                                    <td class="cell100 column4">Donna Wilson</td>
-                                    <td class="cell100 column5">10</td>
-                                </tr>
-
-                                <tr class="row100 body">
-                                    <td class="cell100 column1">Zumba Dance</td>
-                                    <td class="cell100 column2">Dance</td>
-                                    <td class="cell100 column3">5:00 PM - 7:00 PM</td>
-                                    <td class="cell100 column4">Donna Wilson</td>
-                                    <td class="cell100 column5">20</td>
-                                </tr>
-
-                                <tr class="row100 body">
-                                    <td class="cell100 column1">Cardio Blast</td>
-                                    <td class="cell100 column2">Gym</td>
-                                    <td class="cell100 column3">5:00 PM - 7:00 PM</td>
-                                    <td class="cell100 column4">Randy Porter</td>
-                                    <td class="cell100 column5">10</td>
-                                </tr>
-
-                                <tr class="row100 body">
-                                    <td class="cell100 column1">Pilates Reformer</td>
-                                    <td class="cell100 column2">Gym</td>
-                                    <td class="cell100 column3">8:00 AM - 9:00 AM</td>
-                                    <td class="cell100 column4">Randy Porter</td>
-                                    <td class="cell100 column5">10</td>
-                                </tr>
-
-                                <tr class="row100 body">
-                                    <td class="cell100 column1">Supple Spine and Shoulders</td>
-                                    <td class="cell100 column2">Yoga</td>
-                                    <td class="cell100 column3">6:30 AM - 8:00 AM</td>
-                                    <td class="cell100 column4">Randy Porter</td>
-                                    <td class="cell100 column5">15</td>
-                                </tr>
-
-                                <tr class="row100 body">
-                                    <td class="cell100 column1">Yoga for Divas</td>
-                                    <td class="cell100 column2">Yoga</td>
-                                    <td class="cell100 column3">9:00 AM - 11:00 AM</td>
-                                    <td class="cell100 column4">Donna Wilson</td>
-                                    <td class="cell100 column5">20</td>
-                                </tr>
-
-                                <tr class="row100 body">
-                                    <td class="cell100 column1">Virtual Cycle</td>
-                                    <td class="cell100 column2">Gym</td>
-                                    <td class="cell100 column3">8:00 AM - 9:00 AM</td>
-                                    <td class="cell100 column4">Randy Porter</td>
-                                    <td class="cell100 column5">20</td>
-                                </tr>
+                                <c:if test="${tracksStoredByUser ne null}">
+                                        <c:forEach items="${tracksStoredByUser}" var="item">
+                                            <tr class="row100 body">
+                                                <td class="cell100 column1">${item.getTrackId()}</td>
+                                                <td class="cell100 column2">${item.getAnalyticsId()}</td>
+                                                <td class="cell100 column3">${item.getAlbumId()}</td>
+                                                <td class="cell100 column4">${item.getName()}</td>
+                                                <td class="cell100 column5">${item.getDuration()}</td>
+                                                <td class="cell100 column6">${item.getPopularity()}</td>
+                                                <td class="cell100 column7"><div class="checkbox">
+                                                    <label><input type="checkbox" name="track" value="${item.getTrackId()}"></label></div></td>
+                                            </tr>
+                                        </c:forEach>
+                                </c:if>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
+            <button type="submit" class="simple-button minimal-button do-not-invert" value="">Delete Selected Tracks</button>
+            <c:if test="${successDelete ne null}">
+                <span class="form-sub-title">${successDelete}</span>
+            </c:if>
+            <c:if test="${failureDelete ne null}">
+                <span class="form-sub-title">${failureDelete}</span>
+            </c:if>
+        </form>
     </div>
 
     <div style="display: none;">
@@ -311,42 +156,6 @@
             <input type="hidden" name="userId" value="${userId}">
             <button>View Tracks</button>
         </form>
-
-        <c:if test="${tracksStoredByUser ne null}">
-        <form id="deleteTrack" name="deleteTrack" method="post" action="DeleteTrack">
-            <input type="hidden" name="userId" value="${userId}">
-            <table>
-                <tr>
-                    <th>TrackId</th>
-                    <th>AnalyticsId</th>
-                    <th>AlbumId</th>
-                    <th>Name</th>
-                    <th>Duration</th>
-                    <th>Popularity</th>
-                </tr>
-                <c:forEach items="${tracksStoredByUser}" var="item">
-                    <tr>
-                        <td>${item.getTrackId()}</td>
-                        <td>${item.getAnalyticsId()}</td>
-                        <td>${item.getAlbumId()}</td>
-                        <td>${item.getName()}</td>
-                        <td>${item.getDuration()}</td>
-                        <td>${item.getPopularity()}</td>
-                        <td><div class="checkbox">
-                            <label><input type="checkbox" name="track" value="${item.getTrackId()}"></label></div></td>
-                    </tr>
-                </c:forEach>
-            </table>
-            <input type="submit" value="Delete Tracks" />
-            <br>
-            <c:if test="${successDelete ne null}">
-                <td>${successDelete}</td>
-            </c:if>
-            <c:if test="${failureDelete ne null}">
-                <td>${failureDelete}</td>
-            </c:if>
-        </c:if>
-
         <label for="addTracks">Add Tracks:</label>
         <form id="addTracks" name="addTracks" method="post" action="ViewAllTracks">
             <input type="hidden" name="userId" value="${userId}">

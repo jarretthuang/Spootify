@@ -34,15 +34,17 @@ function init() {
     if (pageType === "> My Library > Playlists") {
         $(".tracks-view-container").hide();
         $(".switch-to-playlists").hide();
-    } else {
+    } else if (pageType === "> My Library > Tracks") {
         $(".playlists-view-container").hide();
         $(".switch-to-tracks").hide();
     }
 
 
     $(".switch-to-tracks").click(function () {
+       $(".playlists-view-container").hide();
        $(".spootify-breadcrumb").text("> My Library > Tracks");
        $(".tracks-view-container").show();
+       $(".switch-to-tracks").hide();
        $(".switch-to-playlists").show();
     });
 }

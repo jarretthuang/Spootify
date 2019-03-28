@@ -560,3 +560,12 @@ input[type=number]::-webkit-outer-spin-button {
 .search-menu {
     display: none;
 }
+
+.invert-color {
+    filter: invert(100%);
+}
+
+.no-set-size {
+    width: unset!important;
+    height: unset!important;
+}

@@ -42,62 +42,152 @@
 %>
 
 <body>
-<table>
-    <tr>
-        <th>TrackId</th>
-        <th>AnalyticsId</th>
-        <th>AlbumId</th>
-        <th>Name</th>
-        <th>Duration</th>
-        <th>Popularity</th>
-    </tr>
-    <c:forEach items="${tracks}" var="item">
-        <tr>
-            <td>${item.getTrackId()}</td>
-            <td>${item.getAnalyticsId()}</td>
-            <td>${item.getAlbumId()}</td>
-            <td>${item.getName()}</td>
-            <td>${item.getDuration()}</td>
-            <td>${item.getPopularity()}</td>
-        </tr>
-    </c:forEach>
-</table>
 
-<label for="divisor">Choose tracks that: </label>
-<form action="DivisionExample" method="post">
-    <select name = "divisor" id="divisor">
-        <option value = "playlist">are in every playlist</option>
-        <option value = "user">are stored by every user</option>
-        <option value = "artist">are created by every artist</option>
-    </select>
-    <input type="hidden" name="userId" value="${userId}" />
-    <input type="submit" name="btnsbmt" id="btnsbmt" />
-</form>
+<div class="ui-panel">
+    <div class="spootify-home">
+        <a href="index.jsp"><div class="minimal-button">Spootify</div></a>
+        <div class="spootify-breadcrumb">> Search > Songs</div>
+    </div>
+    <img class="profile-pic do-not-invert" id="login-button"
+         src="https://img1.ak.crunchyroll.com/i/spire3/3614810e9ada5235038e8deb4adc264c1447729591_large.jpg">
+    <div class="popup-form minimal-form">
+        <div class="form-title title-padding">User Settings</div>
+        <form class="small-form" action="UpdateName" method="post">
+            <span class="form-sub-title">Update Username</span>
+            <input class="form-input" type="text" id="newName" name="newName" required>
+            <input type="hidden" name="userId" value="${userId}"/>
+            <button type="submit" class="minimal-button simple-button">Confirm</button>
+            <div class="form-sub-title">
+                <c:if test="${updateName ne null}">
+                    <c:out value="${updateName}"></c:out>
+                </c:if>
+            </div>
+        </form>
+        <form class="small-form" action="UpdateProfile" method="post">
+            <span class="form-sub-title">Update Profile Image</span>
+            <input class="form-input" type="text" id="profilePic" name="profilePic" required>
+            <input type="hidden" name="userId" value="${userId}"/>
+            <button type="submit" class="minimal-button simple-button">Confirm</button>
+            <div class="form-sub-title">
+                <c:if test="${updateProfile ne null}">
+                    <c:out value="${updateProfile}"></c:out>
+                </c:if>
+            </div>
+        </form>
+        <form class="small-form" action="AddDiscount" method="post">
+            <span class="form-sub-title">Apply Discount</span>
+            <select class="form-input form-select" name="discount" id="discount">
+                <option value="Student">Student</option>
+                <option value="Military">Military</option>
+                <option value="Family">Family</option>
+            </select>
+            <input type="hidden" name="userId" value="${userId}"/>
+            <button type="submit" class="minimal-button simple-button">Confirm</button>
+            <div class="form-sub-title">
+                <c:if test="${addDiscount ne null}">
+                    <c:out value="${addDiscount}"></c:out>
+                    <br>
+                    <c:out value="Your new monthly rate is ${monthlyRate}"></c:out>
+                </c:if>
+            </div>
+        </form>
+        <div class="title-padding"></div>
+    </div>
+    <div class="song-browser">
+        <div class="wrap-table100">
+                <div class="table100 ver5 m-b-110 tracks-table">
+                    <div class="table100-head">
+                        <table>
+                            <thead>
+                            <tr class="row100 head">
+                                <th class="cell100 column1">TrackId</th>
+                                <th class="cell100 column2">AnalyticsId</th>
+                                <th class="cell100 column3">AlbumId</th>
+                                <th class="cell100 column4">Name</th>
+                                <th class="cell100 column5">Duration</th>
+                                <th class="cell100 column6">Popularity</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="table100-body js-pscroll">
+                        <table>
+                            <tbody>
+                            <c:if test="${tracks ne null}">
+                                <c:forEach items="${tracks}" var="item">
+                                    <tr class="row100 body">
+                                        <td class="cell100 column1">${item.getTrackId()}</td>
+                                        <td class="cell100 column2">${item.getAnalyticsId()}</td>
+                                        <td class="cell100 column3">${item.getAlbumId()}</td>
+                                        <td class="cell100 column4">${item.getName()}</td>
+                                        <td class="cell100 column5">${item.getDuration()}</td>
+                                        <td class="cell100 column6">${item.getPopularity()}</td>
+                                    </tr>
+                                </c:forEach>
+                            </c:if>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        <form id="divisionExample" name="divisionExample" method="post" action="DivisionExample">
+            <input type="hidden" name="userId" value="${userId}">
+            <button type="submit" class="simple-button minimal-button do-not-invert">Choose Songs That</button>
+            <select name = "divisor" id="divisor" class="form-select form-input invert-color no-set-size">
+                <option value = "playlist">are in every playlist</option>
+                <option value = "user">are stored by every user</option>
+                <option value = "artist">are created by every artist</option>
+            </select>
+        </form>
 
-<label for="field">Sort tracks by: </label>
-<form action="SortTracks" method="post">
-    <select name = "field" id="field">
-        <option value = "liveliness">liveliness</option>
-        <option value = "speechiness">speechiness</option>
-        <option value = "danceability">danceability</option>
-        <option value = "instrumentalness">instrumentalness</option>
-        <option value = "energy">energy</option>
-        <option value = "analyticsKey">key</option>
-        <option value = "loudness">loudness</option>
-        <option value = "tempo">tempo</option>
-    </select>
+        <form id="sortTracks" name="sortTracks" method="post" action="SortTracks">
+            <input type="hidden" name="userId" value="${userId}">
+            <button type="submit" class="simple-button minimal-button do-not-invert">Sort By</button>
+            <select name = "field" id="field" class="form-select form-input invert-color no-set-size">
+                <option value = "liveliness">liveliness</option>
+                <option value = "speechiness">speechiness</option>
+                <option value = "danceability">danceability</option>
+                <option value = "instrumentalness">instrumentalness</option>
+                <option value = "energy">energy</option>
+                <option value = "analyticsKey">key</option>
+                <option value = "loudness">loudness</option>
+                <option value = "tempo">tempo</option>
+            </select>
+            <select name = "order" id="order" class="form-select form-input invert-color no-set-size">
+                <option value = "ASC">ascending order</option>
+                <option value = "DESC">descending order</option>
+            </select>
+        </form>
 
-    <label for="order">in </label>
-    <select name = "order" id="order">
-        <option value = "ASC">ascending order</option>
-        <option value = "DESC">descending order</option>
-    </select>
+        <form id="viewAllTracks" name="viewAllTracks" method="post" action="ViewAllTracks">
+            <input type="hidden" name="userId" value="${userId}">
+            <button type="submit" class="simple-button minimal-button do-not-invert">Go to Browse</button>
+        </form>
+        <form action="ViewTracks" method="POST">
+            <input type="hidden" name="userId" value="${userId}">
+            <button type="submit" class="simple-button minimal-button do-not-invert">Go to My Library</button>
+        </form>
+    </div>
 
-    <input type="hidden" name="userId" value="${userId}" />
-    <input type="submit" name="btn" id="btn" />
-</form>
+
+    <script src="${pageContext.request.contextPath}/frontend/assets/select2/select2.min.js"></script>
+    <script src="${pageContext.request.contextPath}/frontend/assets/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script>
+        $('.js-pscroll').each(function(){
+            var ps = new PerfectScrollbar(this);
+
+            $(window).on('resize', function(){
+                ps.update();
+            })
+        });
+    </script>
+    <script src="${pageContext.request.contextPath}/frontend/assets/javascript/table.js"></script>
+
+</div>
 
 </body>
+
+
 </html>
 
 

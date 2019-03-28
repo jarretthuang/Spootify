@@ -42,10 +42,11 @@ function init() {
 
     $(".switch-to-tracks").click(function () {
        $(".playlists-view-container").hide();
-       $(".spootify-breadcrumb").text("> My Library > Tracks");
        $(".tracks-view-container").show();
        $(".switch-to-tracks").hide();
        $(".switch-to-playlists").show();
+       $(".spootify-breadcrumb").hide();
+       $(".spootify-breadcrumb-static").show();
     });
 }
 

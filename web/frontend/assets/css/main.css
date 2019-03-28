@@ -544,3 +544,13 @@ input[type=number]::-webkit-outer-spin-button {
 .create-playlist-form .simple-button {
     grid-column: 1/2;
 }
+
+.search-icon {
+    width: 20px;
+    cursor: pointer;
+    grid-row: 1/2;
+    margin-right: 200px;
+    grid-column: 2/3;
+    align-self: center;
+    justify-self: end;
+}

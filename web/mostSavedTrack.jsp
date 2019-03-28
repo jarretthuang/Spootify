@@ -109,8 +109,8 @@
                     <div class="table100-body js-pscroll">
                         <table>
                             <tbody>
-                            <c:if test="${allTracks ne null}">
-                                <c:forEach items="${allTracks}" var="item">
+                            <c:if test="${mostSavedTrack ne null}">
+                                <c:forEach items="${mostSavedTrack}" var="item">
                                     <tr class="row100 body">
                                         <td class="cell100 column1">${item.getTrackId()}</td>
                                         <td class="cell100 column2">${item.getAnalyticsId()}</td>
@@ -154,41 +154,5 @@
 
 </div>
 
-
-
-
-
-<div style="display: none;">
-
-
-
-    <form id="mostSavedTrack" name="mostSavedTrack" method="post" action="MostSavedTrack">
-        <input type="hidden" name="userId" value="${userId}">
-        <label for="playlist">View Most Saved Track</label><input/>
-        <button>View Most Saved Track</button>
-    </form>
-    <c:if test="${mostSavedTrack ne null}">
-        <table>
-            <tr>
-                <th>TrackId</th>
-                <th>AnalyticsId</th>
-                <th>AlbumId</th>
-                <th>Name</th>
-                <th>Duration</th>
-                <th>Popularity</th>
-            </tr>
-            <c:forEach items="${mostSavedTrack}" var="item">
-                <tr>
-                    <td>${item.getTrackId()}</td>
-                    <td>${item.getAnalyticsId()}</td>
-                    <td>${item.getAlbumId()}</td>
-                    <td>${item.getName()}</td>
-                    <td>${item.getDuration()}</td>
-                    <td>${item.getPopularity()}</td>
-                </tr>
-            </c:forEach>
-        </table>
-    </c:if>
-</div>
 </body>
 </html>

@@ -50,7 +50,7 @@ public class MostSavedTrack extends HttpServlet {
 
             request.getSession().setAttribute("mostSavedTrack", track);
             request.getSession().setAttribute("userId", userId);
-            request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
+            request.getRequestDispatcher("/mostSavedTrack.jsp").forward(request, response);
 
         } catch (SQLException e) {
 

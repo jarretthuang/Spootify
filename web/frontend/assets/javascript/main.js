@@ -29,20 +29,8 @@ function init() {
         });
     });
 
-    $(".switch-to-playlists").click(function () {
-        $(".tracks-view-container").hide();
-        $(".switch-to-playlists").hide();
-        $(".playlists-view-container").show();
-        $(".switch-to-tracks").show();
-        $(".spootify-breadcrumb").text("> My Library > Playlists");
-    });
-
     $(".switch-to-tracks").click(function () {
-        $(".playlists-view-container").hide();
-        $(".switch-to-tracks").hide();
-        $(".tracks-view-container").show();
-        $(".switch-to-playlists").show();
-        $(".spootify-breadcrumb").text("> My Library > Tracks");
+       $(".tracks-view-container").css("z-index", "11");
     });
 }
 

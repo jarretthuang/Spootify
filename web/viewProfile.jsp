@@ -355,6 +355,35 @@
             </table>
             </c:if>
 
+            <form id="mostSavedTrack" name="mostSavedTrack" method="post" action="MostSavedTrack">
+                <input type="hidden" name="userId" value="${userId}">
+                <label for="playlist">View Most Saved Track</label><input/>
+                <button>View Most Saved Track</button>
+            </form>
+
+            <c:if test="${mostSavedTrack ne null}">
+                <table>
+                    <tr>
+                        <th>TrackId</th>
+                        <th>AnalyticsId</th>
+                        <th>AlbumId</th>
+                        <th>Name</th>
+                        <th>Duration</th>
+                        <th>Popularity</th>
+                    </tr>
+                    <c:forEach items="${mostSavedTrack}" var="item">
+                        <tr>
+                            <td>${item.getTrackId()}</td>
+                            <td>${item.getAnalyticsId()}</td>
+                            <td>${item.getAlbumId()}</td>
+                            <td>${item.getName()}</td>
+                            <td>${item.getDuration()}</td>
+                            <td>${item.getPopularity()}</td>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </c:if>
+
     </div>
 
     <script src="${pageContext.request.contextPath}/frontend/assets/select2/select2.min.js"></script>

@@ -4,6 +4,7 @@ import Utility.DBConnection;
 import model.TrackObj;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,16 +14,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@WebServlet(name = "MostSavedTrack", urlPatterns = {"MostSavedTrack"})
 public class MostSavedTrack extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
         Connection connection = null;
+        int userId = Integer.parseInt(request.getParameter("userId"));
 
-        String query = "SELECT t.trackId, t.name, t.duration, t.popularity" +
+        String query = "SELECT t.trackId, t.name, t.duration, t.popularity " +
                 "FROM Track t, StoresTrack st, SpootifyUser u " +
                 "WHERE t.trackId = st.trackId " +
-                "AND u.userId = st.userId\n" +
+                "AND u.userId = st.userId " +
                 "GROUP BY t.trackId " +
                 "HAVING COUNT(*) > ALL (SELECT COUNT(*) FROM StoresTrack WHERE t.trackId != trackId GROUP BY trackId);";
 
@@ -43,12 +46,10 @@ public class MostSavedTrack extends HttpServlet {
                 track.setDuration(rs.getInt("duration"));
                 track.setPopularity(rs.getInt("popularity"));
 
-
-
-
             }
 
-            request.getSession().setAttribute("track", track);
+            request.getSession().setAttribute("mostSavedTrack", track);
+            request.getSession().setAttribute("userId", userId);
             request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
 
         } catch (SQLException e) {

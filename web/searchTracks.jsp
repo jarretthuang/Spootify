@@ -174,10 +174,12 @@
 
         <form id="viewAllTracks" name="viewAllTracks" method="post" action="ViewAllTracks">
             <input type="hidden" name="userId" value="${userId}">
+            <input type="hidden" name="profilePic" value="${profilePic}"/>
             <button type="submit" class="simple-button minimal-button do-not-invert">Go to Browse</button>
         </form>
         <form action="ViewTracks" method="POST">
             <input type="hidden" name="userId" value="${userId}">
+            <input type="hidden" name="profilePic" value="${profilePic}"/>
             <button type="submit" class="simple-button minimal-button do-not-invert">Go to My Library</button>
         </form>
     </div>

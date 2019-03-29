@@ -26,6 +26,7 @@ public class DeleteTrack extends HttpServlet {
         if (selectedTracks == null) {
             request.getSession().setAttribute("failureDelete", "No tracks selected");
             request.getSession().setAttribute("userId", userId);
+            request.getSession().setAttribute("profilePic", imgURL);
             request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
         }
 

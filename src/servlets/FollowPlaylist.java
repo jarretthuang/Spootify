@@ -23,6 +23,8 @@ public class FollowPlaylist extends HttpServlet {
         String profilePic = request.getParameter("profilePic");
         if (selectedPlaylists == null) {
             request.getSession().setAttribute("failureFollow", "No playlists selected");
+            request.getSession().setAttribute("profilePic", profilePic);
+            request.getSession().setAttribute("userId", userId);
             request.getRequestDispatcher("/searchPlaylists.jsp").forward(request, response);
         }
 

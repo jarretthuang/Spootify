@@ -187,7 +187,7 @@
                             <table>
                                 <tbody>
                                 <c:if test="${userPlaylists ne null}">
-                                    <c:forEach items="${userPlaylists}" var="item">
+                                    <c:forEach items="${userPlaylists}" var="item" varStatus="loop">
                                         <tr class="row100 body">
                                             <td class="cell100 column1">${item.getPlaylistId()}</td>
                                             <td class="cell100 column2">${item.getDescription()}</td>

@@ -18,10 +18,12 @@ public class AddTrack extends HttpServlet {
 
         String[] selectedTracks = request.getParameterValues("track");
         int userId = Integer.parseInt(request.getParameter("userId").trim());
+        String imgURL = request.getParameter("profilePic");
 
         if (selectedTracks == null) {
             request.getSession().setAttribute("failure", "No tracks selected");
             request.getSession().setAttribute("userId", userId);
+            request.getSession().setAttribute("profilePic", imgURL);
             request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
         }
 
@@ -49,7 +51,8 @@ public class AddTrack extends HttpServlet {
 
             request.getSession().setAttribute("success", "Added all selected tracks!");
             request.getSession().setAttribute("userId", userId);
-            request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
+            request.getSession().setAttribute("profilePic", imgURL);
+            request.getRequestDispatcher("/viewTracks.jsp").forward(request, response);
 
         } catch (SQLException e) {
 

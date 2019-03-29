@@ -19,14 +19,17 @@ import java.util.ArrayList;
 public class CreatePlaylist extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String[] selectedTracks = request.getParameterValues("trackPlaylist");
+        int userId = Integer.parseInt(request.getParameter("userId"));
+        String profilePic = request.getParameter("profilePic");
+
 
         if (selectedTracks == null) {
             request.getSession().setAttribute("failure", "No tracks selected");
+            request.getSession().setAttribute("userId", userId);
+            request.getSession().setAttribute("profilePic", profilePic);
             request.getRequestDispatcher("/viewProfile.jsp").forward(request, response);
         }
 
-        int userId = Integer.parseInt(request.getParameter("userId"));
-        String profilePic = request.getParameter("profilePic");
         String description = request.getParameter("description").trim();
         int playlistId = Math.abs(description.hashCode());
         Connection connection = null;

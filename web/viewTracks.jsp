@@ -224,7 +224,7 @@
                     <input type="hidden" name="userId" value="${userId}">
                     <button type="submit" class="simple-button minimal-button do-not-invert" value="">Create Playlist</button>
                     <c:if test="${successCreate ne null}">
-                        <span class="form-sub-title">${successCreate}, Playlist ID is ${playlistId}</span>
+                        <span class="form-sub-title">${successCreate} Playlist ID is ${playlistId}</span>
                     </c:if>
                     <c:if test="${failureCreate ne null}">
                         <span class="form-sub-title">${failureCreate}</span>
